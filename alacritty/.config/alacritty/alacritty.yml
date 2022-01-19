@@ -1,0 +1,55 @@
+background_opacity: 0.9
+
+# Colors
+colors:
+  # Default colors
+  primary:
+    background: '#282C34'
+    foreground: '#ABB2BF'
+
+  # Colors the cursor will use if `custom_cursor_colors` is true
+  cursor:
+    text: '0x000000'
+    cursor: '0xffffff'
+
+  # Normal colors
+  normal:
+    black:   '#5C6370'
+    red:     '#E06C75'
+    green:   '#98C379'
+    yellow:  '#E5C07B'
+    blue:    '#61AFEF'
+    magenta: '#C678DD'
+    cyan:    '#56B6C2'
+    white:   '#ABB2BF'
+
+  # Bright colors
+  bright:
+    black:   '#4B5263'
+    red:     '#BE5046'
+    green:   '#98C379'
+    yellow:  '#D19A66'
+    blue:    '#61AFEF'
+    magenta: '#C678DD'
+    cyan:    '#56B6C2'
+    white:   '#3E4452'
+
+
+font:
+  normal:
+    family: FuraCode Nerd Font
+    style: Regular
+
+  bold:
+    family: FuraCode Nerd Font
+    style: Bold
+
+  italic:
+    family: FuraCode Nerd Font
+    style: Italic
+
+  bold_italic:
+    family: FuraCode Nerd Font
+    style: Bold Italic
+
+  size: 10

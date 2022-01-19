@@ -1,0 +1,66 @@
+#
+# general
+#
+
+# terminal
+super + Return
+    $TERMINAL
+
+# program launcher
+super + p
+    rofi -show drun -modi run -show-icons
+
+# gui programs
+super + {w,c,e,z}
+    {$BROWSER,discord,code,flameshot gui}
+
+super + o ; {b,d,f,o,p,r,s,t,v,z}
+    {blueman-manager,discord,pcmanfm,obs,bitwarden-desktop,rstudio-bin,steam,teamspeak3,code,zoom}
+
+
+# terminal programs
+super + {m,r}
+    $TERMINAL -e {ncmpcpp,ranger}
+
+# system settings
+super + {F1,F8}
+    {pavucontrol,$TERMINAL -e nmtui}
+
+# lockscreen
+super + Escape
+	betterlockscreen -l dim
+
+# volume controls
+XF86Audio{LowerVolume,RaiseVolume,Mute}
+	{pactl set-sink-volume @DEFAULT_SINK@ -5%, pactl set-sink-volume @DEFAULT_SINK@ +5%, pactl set-sink-mute @DEFAULT_SINK@ toggle} && dunstify -u low -t 3000 -r 90210 " $(printf %.0f%% $(pamixer --get-volume))"
+
+# brightness controls
+XF86MonBrightness{Down,Up}
+	xbacklight {-dec 5,-inc 5} && dunstify -u low -t 3000 -r 90210 " $(printf %.0f%% $(xbacklight -get))"
+
+# suspend on laptop close
+XF86Sleep
+	systemctl suspend
+
+# reload sxhkd
+super + shift + r
+    pkill -USR1 -x sxhkd
+
+#
+# rofi
+#
+super + shift + p
+    bwmenu
+
+super + shift + c
+    rofi -show calc -modi calc -no-show-match -no-sort
+
+
+#super + z
+#    zoom.sh
+
+super + x
+    textbooks.sh
+
+super + shift + b
+    microsoftBG.sh

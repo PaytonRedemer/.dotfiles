@@ -1,0 +1,182 @@
+#
+# general
+#
+
+# terminal
+super + Return
+    $TERMINAL
+
+# program launcher
+super + d
+    rofi -show drun -modi run -show-icons
+
+
+# gui programs
+super + {w,s}
+    {$BROWSER,flameshot gui}
+
+super + o ; {b,d,f,o,p,r,s,t,v,z}
+    {blueman-manager,discord,pcmanfm,obs,bitwarden-desktop,rstudio-bin,steam,teamspeak3,code,zoom}
+
+
+# terminal programs
+super + {m,r}
+    $TERMINAL -e {ncmpcpp,ranger}
+
+# system settings
+super + {F1,F8}
+    {pavucontrol,$TERMINAL -e nmtui}
+
+# lockscreen
+super + Escape
+	betterlockscreen -l dim
+
+# volume controls
+XF86Audio{LowerVolume,RaiseVolume,Mute}
+	{pactl set-sink-volume @DEFAULT_SINK@ -5%, pactl set-sink-volume @DEFAULT_SINK@ +5%, pactl set-sink-mute @DEFAULT_SINK@ toggle}
+
+# brightness controls
+XF86MonBrightness{Down,Up}
+	xbacklight {-dec 5,-inc 5} && dunstify -u low -t 3000 -r 90210 " $(printf %.0f%% $(xbacklight -get))"
+
+# suspend on laptop close
+XF86Sleep
+	systemctl suspend
+
+
+#
+# bspwm
+#
+
+# reload config files
+super + shift + {w,r,p}
+    {bspc wm -r,pkill -USR1 -x sxhkd,~/.config/polybar/launch.sh}
+
+# toggle floating on and off
+#super + o
+#    bspc node focused.tiled -t floating || bspc node focused.floating -t tiled
+
+# switch between tiled and floating
+alt + {t,f}
+	bspc node -t {tiled,floating}
+
+# toggle gaps
+super + g
+	bspc config window_gap {0,12}
+
+# toggle polybar
+super + b
+   bartoggle.sh
+
+@super + b
+    polybar-msg cmd restart
+
+super + shift + {i,s}
+    bspc node -g {locked,sticky}
+
+# Change window gap
+alt + {minus,equal}
+	bspc config -d focused window_gap $((`bspc config -d focused window_gap` {+,-} 2 ))
+
+# close program
+super + {_,shift + }q
+	bspc node -{c,k}
+
+# fullscreen
+super + f
+    bspc node -t "~fullscreen"
+
+# send the window to another edge of the screen
+super + {_,shift + }{{h,j,k,l}
+	bspc node -{f,s} {west,south,north,east}
+
+super + {_,shift + }{Left,Down,Up,Right}
+    bspc node -{f,s} {west,south,north,east}
+
+# change desktops
+super + {1-9,0}
+    bspc desktop -f {1,2,3,4,5,6,7,8,9,10}
+
+# move node to a another desktop
+super + shift + {1-9,0}
+    bspc node -d {1,2,3,4,5,6,7,8,9,10}
+
+
+# focus the last node/desktop
+super + {grave,Tab}
+    bspc {node,desktop} -f last
+
+#
+# Window resize
+
+# expand a window by moving one of its side outward
+#super + alt + {h,j,k,l}
+#	bspc node -z {left -20 0,bottom 0 20,top 0 -20,right 20 0}
+#
+#super + alt + {Left,Down,Up,Right}
+#	bspc node -z {left -20 0,bottom 0 20,top 0 -20,right 20 0}
+
+# contract a window by moving one of its side inward
+#super + alt + shift + {h,j,k,l}
+#    bspc node -z {right -20 0,top 0 20,bottom 0 -20,left 20 0}
+
+#super + alt + shift + {Left,Down,Up,Right}
+#	bspc node -z {right -20 0,top 0 20,bottom 0 -20,left 20 0}
+
+# expand/contract a window
+super + control + {h,j,k,l}
+    bspc node -z {left -20 0 || bspc node -z right -20 0, \
+        bottom 0 20 || bspc node -z top 0 20,\
+        top 0 -20 || bspc node -z bottom 0 -20,\
+        right 20 0 || bspc node -z left 20 0}
+
+# resize windows i3 style
+#super + ctrl + {h,j,k,l}
+#	~/.local/bin/resize {x +, y -, y +, x -}
+
+# move a floating window
+super + ctrl + {Left,Down,Up,Right}
+    bspc node -v {-20 0,0 20,0 -20,20 0}
+
+
+
+#
+# Preselect
+
+#preselect the direction
+super + alt + {h,j,k,l}
+	bspc node -p {west,south,north,east}
+
+super + alt + {Left,Down,Up,Right}
+	bspc node -p {west,south,north,east}
+
+# preselect the ratio
+super + alt + {1-9}
+	bspc node -o 0.{1-9}
+
+# cancel the preselection for the focused node
+super + space
+	bspc node -p cancel
+
+#
+# rofi
+#
+
+super + p
+    bwmenu
+
+super + c
+    rofi -show calc -modi calc -no-show-match -no-sort
+
+
+super + z
+    zoom.sh
+
+super + x
+    textbooks.sh
+
+super + shift + b
+    microsoftBG.sh
+
+super + shift + Return
+    tdrop -ma -h 59% $TERMINAL

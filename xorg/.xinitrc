@@ -2,14 +2,14 @@
 
 xsetroot -cursor_name left_ptr
 wmname compiz # Fixes issue with java applications
-feh --bg-fill ~/Pictures/Wallpapers/snow.jpg --no-fehbg
+
+nm-applet &
 
 # daemons
-sxhkd &
+#sxhkd &
+udiskie &
 dunst &
 #picom &
 #mpd &
 
-# dwm
-dwmbar &
-exec dbus-launch dwm
+exec dbus-launch bspwm

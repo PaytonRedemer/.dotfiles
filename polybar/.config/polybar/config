@@ -72,7 +72,7 @@ font-3 = FontAwesome5Brands:style=Solid:pixelsize=11
 
 modules-left = bspwm
 modules-center = mpd
-modules-right = wireless-network battery pulseaudio date
+modules-right = battery pulseaudio date
 
 tray-position = right
 tray-padding = 1
@@ -80,7 +80,7 @@ tray-padding = 1
 wm-restack = bspwm
 ;wm-restack = i3
 
-;override-redirect = true
+override-redirect = true
 
 ;scroll-up = bspwm-desknext
 ;scroll-down = bspwm-deskprev

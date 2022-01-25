@@ -2,22 +2,24 @@
 
 # startup
 ~/.local/bin/monitorSetup.sh
-sxhkd &
+sxhkd -c $HOME/.config/sxhkd/sxhkdrc $HOME/.config/sxhkd/sxhkdrc.common &
 pgrep bspswallow || bspswallow &
-udiskie & # for some reason this doesn't launch in .xinitrc
+
+# bar
+$HOME/.config/polybar/launch.sh &
 
 # bspwm
-bspc config border_width         1
-bspc config window_gap          12
-bspc config split_ratio          0.50
-bspc config borderless_monocle   true
-bspc config gapless_monocle      true
-bspc config top_padding 0
-bspc config right_padding 0
-bspc config bottom_padding 0
-bspc config left_padding 0
+bspc config border_width            1
+bspc config window_gap              12
+bspc config split_ratio             0.50
+bspc config borderless_monocle      true
+bspc config gapless_monocle         true
+bspc config top_padding             27 # polybar height in pixels
+bspc config right_padding           0
+bspc config bottom_padding          0
+bspc config left_padding            0
 bspc config pointer_follows_monitor true
-bspc config focus_follows_pointer true
+bspc config focus_follows_pointer   true
 
 # colors
 bspc config focused_border_color \#FFFFFF
@@ -31,6 +33,3 @@ bspc config focused_border_color \#FFFFFF
 bspc rule -a Zathura state=tiled
 bspc rule -a feh state=floating
 bspc rule -a zoom state=floating
-
-# bar
-$HOME/.config/polybar/launch.sh &

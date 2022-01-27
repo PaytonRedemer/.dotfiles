@@ -16,15 +16,15 @@ cyan = ${xrdb:color14:#222}
 dark-white = ${xrdb:color7:#222}
 white = ${xrdb:color15:#222}
 
-background = ${xrdb:background:#222}
-background-alt = #444
+background = #000000 
+background-alt = ${xrdb:background:#222}
 foreground = ${xrdb:color7:#222}
 foreground-alt = #555
 primary = ${colors.red}
 secondary = #e60053
 alert = ${colors.red}
-text = ${colors.white}
-
+text = #FFFFFF
+text-alt = ${colors.white}
 
 
 [settings]

@@ -84,3 +84,10 @@ super + alt + {1-9}
 # cancel the preselection for the focused node
 super + space
 	bspc node -p cancel
+
+# scratchpads
+super + shift + Return
+	tdrop -a -y 27 -n 1 $TERMINAL
+
+#super + shift + m
+#	tdrop -a -n 2 $TERMINAL -e ncmpcpp

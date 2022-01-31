@@ -9,7 +9,8 @@ nm-applet &
 #sxhkd &
 udiskie &
 dunst &
-#picom &
+picom &
 #mpd &
 
 exec dbus-launch bspwm
+

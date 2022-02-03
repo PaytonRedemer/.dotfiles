@@ -62,6 +62,14 @@ super + {grave,Tab}
 super + {_,shift +} space
 	bspc node -{f,s} biggest.local
 
+# focus to next or previous monitor
+super + {comma,period}
+    bspc monitor -f {prev,next}
+
+# move node to next or pervious monitor
+super + shift + {comma,period}
+    bspc node -m {prev,next}
+
 #
 # Window resize
 #

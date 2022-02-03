@@ -29,7 +29,7 @@ import Data.Maybe (fromJust)
 ------------------------------------------------------------------------
 -- Default Programs
 myTerminal :: String
-myTerminal = "st"
+myTerminal = "alacritty"
 
 myBrowser :: String
 myBrowser = "brave"
@@ -51,12 +51,8 @@ myModMask       = mod4Mask -- Modkey
 -- Startup Applications
 myStartupHook = do
     spawnOnce "udiskie &"
-    spawnOnce "trayer --edge top --align right --widthtype request --padding 6 --SetDockType true --SetPartialStrut true --expand true --monitor 1 --transparent true --alpha 0 --tint 0x2E3440  --height 28 &"
-
     spawnOnce "flameshot &"
-    spawnOnce "nm-applet &"
-    spawnOnce "volumeicon &"
-
+    spawnOnce "$HOME/.config/polybar/launch.sh &"
 
 -- > workspaces = ["web", "irc", "code" ] ++ map show [4..9]
 
@@ -202,7 +198,6 @@ myManageHook = composeAll
 -- Main
 
 main = do
-    xmproc <- spawnPipe "xmobar -x 0 ~/.config/xmobar/xmobarrc"
     xmonad $ ewmh def
         { manageHook = myManageHook <+> manageDocks
         , handleEventHook    = docksEventHook
@@ -225,18 +220,4 @@ main = do
         , layoutHook         = myLayout
         , startupHook        = myStartupHook
         , logHook = dynamicLogWithPP $ namedScratchpadFilterOutWorkspacePP $ xmobarPP
-
- { ppOutput          = \x -> hPutStrLn xmproc x
-
-              , ppCurrent         = xmobarColor "#c792ea" "" . wrap "[" "]"
-              , ppVisible         = xmobarColor "#c792ea" ""
-              , ppHidden          = xmobarColor "#c792ea" "" . \s -> clickable s
-              , ppHiddenNoWindows = xmobarColor "#82AAFF" "" . \s -> clickable s                                -- \s -> "" -- shows nothing
-              , ppLayout          = xmobarColor "#BBBBBB" "" . wrap "<fn=1>" " </fn>"
-              , ppSep             = "<fn=1><fc=#666666> | </fc></fn>"
-              , ppWsSep           = " "
-
-              , ppOrder           = \(ws:l:t:ex) -> [ws,l] -- ++ [t] -- order of things in xmobar : workspaces, layout, title
-              }
-
         } `additionalKeysP` myKeys

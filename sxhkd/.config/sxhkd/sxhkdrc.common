@@ -1,5 +1,5 @@
 #
-# general
+# general bindings
 #
 
 # terminal
@@ -25,6 +25,14 @@ super + {m,r,XF86AudioMute}
 super + Escape
 	betterlockscreen -l dim
 
+# reload sxhkd
+super + shift + r
+    pkill -USR1 -x sxhkd
+
+#
+# system controls
+#
+
 # volume controls
 XF86Audio{LowerVolume,RaiseVolume,Mute}
 	{pactl set-sink-volume @DEFAULT_SINK@ -5%, pactl set-sink-volume @DEFAULT_SINK@ +5%, pactl set-sink-mute @DEFAULT_SINK@ toggle}
@@ -37,10 +45,6 @@ XF86MonBrightness{Down,Up}
 XF86Sleep
 	systemctl suspend
 
-# reload sxhkd
-super + shift + r
-    pkill -USR1 -x sxhkd
-
 #
 # rofi
 #
@@ -48,14 +52,8 @@ super + shift + r
 super + p
     bwmenu
 
-super + shift + c
-    rofi -show calc -modi calc -no-show-match -no-sort
-
 super + x
     textbooks.sh
 
 super + shift + b
     microsoftBG.sh
-
-super + shift + Return
-    tdrop -ma -h 59% $TERMINAL

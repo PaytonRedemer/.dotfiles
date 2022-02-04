@@ -109,10 +109,10 @@ super + alt + space
 #
 
 super + shift + Return
-	tdrop -a -y 27 -n 1 $TERMINAL
+	tdrop -am -y 27 -n 1 $TERMINAL
 
 super + shift + m
-	tdrop -a -y 27 -n 2 $TERMINAL -e ncmpcpp
+	tdrop -am -y 27 -n 2 $TERMINAL -e ncmpcpp
 
 super + shift + c
-	tdrop -a -y 27 qalculate-gtk
+	tdrop -am -y 27 qalculate-gtk

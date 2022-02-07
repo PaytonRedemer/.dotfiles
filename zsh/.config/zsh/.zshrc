@@ -16,9 +16,9 @@ alias ls="ls -ahN --color=auto --group-directories-first"
 alias grep="grep -i --color=auto"
 
 alias p="sudo pacman"
-alias ps="sudo pacman -S"
-alias u="sudo pacman -Syu"
-alias pr="sudo pacman -Rs"
+alias ps="yay -S"
+alias u="yay -Syu"
+alias pr="yay -Rs"
 alias diff="diff --color=auto"
 
 #devour
@@ -26,6 +26,7 @@ alias jupyter-notebook="devour jupyter-notebook"
 
 
 alias h="history"
+alias f='cd $(fd --type directory | fzf)'
 
 
 
@@ -36,6 +37,3 @@ alias g="git"
 alias m="ncmpcpp"
 alias r="ranger"
 alias z="zathura"
-
-alias school="$HOME/School/Spring_2021"
-alias textbooks="$HOME/Textbooks"

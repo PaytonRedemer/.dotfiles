@@ -1,8 +1,4 @@
 set adjust-open "best-fit"
-
-
-map H navigate previous
-map L navigate next
 set sandbox none
 set statusbar-h-padding 0
 set statusbar-v-padding 0
@@ -15,6 +11,8 @@ map r reload
 map R rotate
 map K zoom in
 map J zoom out
+map H navigate previous
+map L navigate next
 map i recolor
 map p print
 map g goto top

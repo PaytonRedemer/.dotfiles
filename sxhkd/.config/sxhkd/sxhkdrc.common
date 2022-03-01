@@ -8,7 +8,7 @@ super + Return
 
 # program launcher
 super + d
-    rofi -show drun -modi run -show-icons
+    rofi -combi-modi drun,window,ssh -show combi
 
 # gui programs
 super + {w,c,e,z}

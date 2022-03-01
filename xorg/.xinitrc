@@ -11,7 +11,7 @@ sxhkd -c ~/.config/sxhkd/sxhkdrc.common &
 #udiskie &
 dunst &
 #picom &
-#mopidy &
+mopidy &
 #mpd &
 
 exec dbus-launch bspwm

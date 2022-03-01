@@ -8,10 +8,10 @@ nm-applet &
 
 # daemons
 sxhkd -c ~/.config/sxhkd/sxhkdrc.common &
-udiskie &
+#udiskie &
 dunst &
 #picom &
-mopidy &
+#mopidy &
 #mpd &
 
 exec dbus-launch bspwm

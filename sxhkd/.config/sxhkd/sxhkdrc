@@ -8,15 +8,15 @@ super + shift + {w,p,BackSpace}
 
 # toggle gaps
 super + g
-	bspc config window_gap {0,12}
+    bspc config window_gap {0,12}
 
 # Change window gap
 super + {minus,equal}
-	bspc config -d focused window_gap $((`bspc config -d focused window_gap` {+,-} 2 ))
+    bspc config -d focused window_gap $((`bspc config -d focused window_gap` {+,-} 2 ))
 
 # toggle polybar
 super + b
-	{polybar-msg cmd toggle; bspc config top_padding 0, \
+    {polybar-msg cmd toggle; bspc config top_padding 0, \
         polybar-msg cmd toggle; bspc config top_padding 27}
 
 # fullscreen
@@ -33,7 +33,7 @@ super + shift + {i,s}
 
 # close program
 super + {_,shift + }q
-	bspc node -{c,k}
+    bspc node -{c,k}
 
 #
 # Window focus and positioning
@@ -41,7 +41,7 @@ super + {_,shift + }q
 
 # send the window to another edge of the screen
 super + {_,shift + }{{h,j,k,l}
-	bspc node -{f,s} {west,south,north,east}
+    bspc node -{f,s} {west,south,north,east}
 
 super + {_,shift + }{Left,Down,Up,Right}
     bspc node -{f,s} {west,south,north,east}
@@ -60,7 +60,7 @@ super + {grave,Tab}
 
 # focus to the largest node or swap the currently focused node with the biggest node
 super + {_,shift +} space
-	bspc node -{f,s} biggest.local
+    bspc node -{f,s} biggest.local
 
 # focus to next or previous monitor
 super + {comma,period}
@@ -91,28 +91,28 @@ super + ctrl + {Left,Down,Up,Right}
 
 #preselect the direction
 super + alt + {h,j,k,l}
-	bspc node -p {west,south,north,east}
+    bspc node -p {west,south,north,east}
 
 super + alt + {Left,Down,Up,Right}
-	bspc node -p {west,south,north,east}
+    bspc node -p {west,south,north,east}
 
 # preselect the ratio
 super + alt + {1-9}
-	bspc node -o 0.{1-9}
+    bspc node -o 0.{1-9}
 
 # cancel the preselection for the focused node
 super + alt + space
-	bspc node -p cancel
+    bspc node -p cancel
 
 #
 # scratchpads
 #
 
 super + shift + Return
-	tdrop -am -y 27 -n 1 $TERMINAL
+    tdrop -am -y 27 -n 1 $TERMINAL
 
 super + shift + m
-	tdrop -am -y 27 -n 2 $TERMINAL -e ncmpcpp
+    tdrop -am -y 27 -n 2 $TERMINAL -e ncmpcpp
 
 super + shift + c
-	tdrop -am -y 27 qalculate-gtk
+    tdrop -am -y 27 qalculate-gtk

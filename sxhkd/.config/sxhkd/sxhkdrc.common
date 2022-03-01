@@ -23,7 +23,7 @@ super + {m,r,XF86AudioMute}
 
 # lockscreen
 super + Escape
-	betterlockscreen -l dim
+    betterlockscreen -l dim
 
 # reload sxhkd
 super + shift + r
@@ -35,15 +35,15 @@ super + shift + r
 
 # volume controls
 XF86Audio{LowerVolume,RaiseVolume,Mute}
-	{pactl set-sink-volume @DEFAULT_SINK@ -5%, pactl set-sink-volume @DEFAULT_SINK@ +5%, pactl set-sink-mute @DEFAULT_SINK@ toggle}
+    {pactl set-sink-volume @DEFAULT_SINK@ -5%, pactl set-sink-volume @DEFAULT_SINK@ +5%, pactl set-sink-mute @DEFAULT_SINK@ toggle}
 
 # brightness controls
 XF86MonBrightness{Down,Up}
-	xbacklight {-dec 5,-inc 5} && dunstify -u low -t 3000 -r 90210 " $(printf %.0f%% $(xbacklight -get))"
+    xbacklight {-dec 5,-inc 5} && dunstify -u low -t 3000 -r 90210 " $(printf %.0f%% $(xbacklight -get))"
 
 # suspend on laptop close
 XF86Sleep
-	systemctl suspend
+    systemctl suspend
 
 #
 # rofi

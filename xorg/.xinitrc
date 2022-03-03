@@ -4,10 +4,10 @@
 #wmname compiz # Fixes issue with java applications
 ##monitorSetup.sh
 #
-#nm-applet &
+nm-applet &
 #
 ## daemons
-#sxhkd -c ~/.config/sxhkd/sxhkdrc.common &
+sxhkd -c ~/.config/sxhkd/sxhkdrc.common &
 ##udiskie &
 #dunst &
 ##picom &

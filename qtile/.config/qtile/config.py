@@ -119,7 +119,7 @@ screens = [
                     padding=5,
                     format="%a, %b %d %I:%M %P"
                     ),
-                widget.Systray(padding=5),
+                #widget.Systray(padding=5),
             ],
             24,
             # border_width=[2, 0, 2, 0],  # Draw top and bottom borders

@@ -15,5 +15,5 @@ dunst &
 mopidy &
 
 # wm
-dwmbar &
-exec dbus-launch dwm
+# dwmbar &
+exec dbus-launch bspwm

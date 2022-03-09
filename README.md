@@ -1,30 +1,34 @@
 # Payton's Arch Linux dotfiles
-These are the configuration files I use for school and software development.
+These are the configuration files I use for school and software development. This is a work in progress.
+## Programs I use
 
-## Linux setup
-- wm: bspwm
-- notif: dunst
-- launcher: rofi
-- editor: nvim (vscode for azure)
-- terminal: alacritty
+- **CLI**
+    - editor: nvim
+    - file manager: ranger
+    - music: ncmpcpp
+    - email:
+    - rss: newsboat
+    - todo: plaintext file
+    - cal:
+    - mounter: udiskie
+
+- **GUI**
+    - wm: bspwm
+    - terminal: alacritty
+    - launcher: rofi
+    - browser: firefox
+    - notif: dunst
+    - pdf viewer: zathura
+    - file manager: pcmanfm
+    - editor: vs code
+    - office: libreoffice
+    - calc: rofi-calc (uses qalc)
+
+## Theme
 - font: fura code nerd font
 - color: tbd
-- mounter: udiskie
-- file manager gui: pcmanfm
-- file manager term: ranger
 
-## Dev tools
-- browser: firefox
-- music: ncmpcpp
-- office: libreoffice
-- pdf viewer: zathura
-- email: web
-- rss: newsboat
-- todo: conky and plaintext file
-- cal: gcal
-- calc: rofi-calc (uses qalc)
-
-## Want to install?
+## Install
 
 ```
 

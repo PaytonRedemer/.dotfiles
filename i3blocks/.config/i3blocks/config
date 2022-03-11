@@ -1,0 +1,21 @@
+separator_block_width=15
+
+# Guess the weather hourly
+[weather]
+command=curl -Ss 'https://wttr.in?0&T&Q' | cut -c 16- | head -2 | xargs echo
+interval=3600
+color=#A4C2F4
+
+[battery]
+command=echo "🔋 $(cat /sys/class/power_supply/BAT0/capacity)%"
+interval=30
+
+[volume]
+command=~/.local/bin/volume
+interval=once
+signal=10
+
+# Update time every 1 seconds
+[time]
+command=echo "🕒 $(date "+%a, %b %d %I:%M:%S %p")"
+interval=1

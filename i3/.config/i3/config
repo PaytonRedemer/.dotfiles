@@ -36,6 +36,9 @@ bindsym $mod+f fullscreen toggle
 
 # layouts
 bindsym $mod+t split toggle
+bindsym $mod+Shift+d layout default
+bindsym $mod+Shift+s layout stacking
+bindsym $mod+Shift+t layout tabbed
 
 # toggle tiling / floating
 bindsym $mod+Shift+space floating toggle

@@ -16,4 +16,4 @@ mopidy &
 
 # wm
 # dwmbar &
-exec dbus-launch bspwm
+exec dbus-launch i3

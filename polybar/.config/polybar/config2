@@ -16,7 +16,7 @@ cyan = ${xrdb:color14:#222}
 dark-white = ${xrdb:color7:#222}
 white = ${xrdb:color15:#222}
 
-background = #000000 
+background = #000000
 background-alt = ${xrdb:background:#222}
 foreground = ${xrdb:color7:#222}
 foreground-alt = #555
@@ -65,17 +65,17 @@ padding-right = 0
 module-margin-left = 1
 module-margin-right = 1
 
-font-0 = Fira Code:style=semibold:size=10:antialias=true;
-font-1 = Material Design Icons:syle=Regular:size=11
-font-2 = FontAwesome5Free:style=Solid:pixelsize=11
-font-3 = FontAwesome5Brands:style=Solid:pixelsize=11
+font-0 = Fira Code Nerd Font:style=semibold:size=11:antialias=true;
+;font-1 = Material Design Icons:syle=Regular:size=11
+;font-2 = FontAwesome5Free:style=Solid:pixelsize=11
+;font-3 = FontAwesome5Brands:style=Solid:pixelsize=11
 
 modules-left = bspwm
 modules-center = mpd
 modules-right = battery pulseaudio date
 
 tray-position = right
-tray-padding = 1
+tray-padding = 2
 
 wm-restack = bspwm
 ;wm-restack = i3

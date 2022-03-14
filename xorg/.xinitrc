@@ -11,7 +11,7 @@ nm-applet &
 sxhkd -c ~/.config/sxhkd/sxhkdrc.common &
 udiskie &
 dunst &
-#picom &
+picom &
 mopidy &
 
 # wm

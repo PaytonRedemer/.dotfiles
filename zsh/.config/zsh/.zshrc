@@ -7,13 +7,15 @@ HISTSIZE=1000
 SAVEHIST=1000
 bindkey -v
 
-
-
 autoload -Uz compinit
 compinit -d ~/.cache/zsh/zcompdump-$ZSH_VERSION
 
-alias ls="ls -ahN --color=auto --group-directories-first"
-alias grep="grep -i --color=auto"
+alias ls="ls -hN --color=auto --group-directories-first"
+alias grep="grep --color=auto"
+
+alias cp="cp -iv"
+alias mv="mv -iv"
+alias rm="rm -iv"
 
 alias p="sudo pacman"
 alias ps="yay -S"
@@ -23,11 +25,10 @@ alias diff="diff --color=auto"
 
 #devour
 alias jupyter-notebook="devour jupyter-notebook"
-
+alias zathura="devour zathura"
 
 alias h="history"
 alias f='cd $(fd --type directory | fzf)'
-
 
 
 alias e="$EDITOR"

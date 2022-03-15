@@ -2,8 +2,7 @@
 
 # startup
 ~/.local/bin/monitorSetup.sh
-sxhkd -c $HOME/.config/sxhkd/sxhkdrc $HOME/.config/sxhkd/sxhkdrc.common &
-pgrep bspswallow || bspswallow &
+sxhkd -c $HOME/.config/sxhkd/sxhkdrc &
 
 # bar
 $HOME/.config/polybar/launch.sh &

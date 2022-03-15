@@ -5,11 +5,11 @@ wmname compiz # Fixes issue with java applications
 monitorSetup.sh
 
 # sys-tray
-nm-applet &
+# nm-applet &
 
 # daemons
 sxhkd -c ~/.config/sxhkd/sxhkdrc.common &
-udiskie &
+# udiskie &
 dunst &
 picom &
 mopidy &

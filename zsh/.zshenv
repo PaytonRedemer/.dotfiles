@@ -6,7 +6,7 @@ export PATH
 # default programs
 export EDITOR="nvim"
 export TERMINAL="alacritty"
-export BROWSER="firefox"
+export BROWSER="qutebrowser"
 
 # xdg
 export XDG_CONFIG_HOME="$HOME/.config"

@@ -142,6 +142,24 @@ config.set('content.javascript.enabled', True, 'chrome://*/*')
 # Type: Bool
 config.set('content.javascript.enabled', True, 'qute://*/*')
 
+# Setting default page for when opening new tabs or new windows with
+# commands like :open -t and :open -w .
+c.url.default_page = 'https://google.com/'
+c.url.start_pages = 'https://google.com/'
+
+
+
+c.url.searchengines = {'DEFAULT': 'https://www.google.com/search?q={}', 'ddg': 'https://duckduckgo.com/?q={}', 'y': 'https://www.youtube.com/results?search_query={}', 'w': 'https://en.wikipedia.org/wiki/{}',}
+
+# Default font families to use. Whenever "default_family" is used in a
+# font setting, it's replaced with the fonts listed here. If set to an
+# empty value, a system-specific monospace default is used.
+# Type: List of Font, or Font
+c.fonts.default_family = '"FiraCode Nerd Font"'
+
 # Bindings for normal mode
-config.bind(',v', 'spawn mpv {url}')
+config.bind(',v', 'hint links spawn mpv {hint-url}')
 config.bind(',p', 'spawn --userscript qute-bitwarden.py')
+config.bind('xb', 'config-cycle statusbar.show always never')
+config.bind('xt', 'config-cycle tabs.show always never')
+config.bind('xx', 'config-cycle statusbar.show always never;; config-cycle tabs.show always never')

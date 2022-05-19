@@ -15,6 +15,7 @@ elif echo "$displays" | grep -q "HDMI2"; then
     xrandr --output eDP1 --primary --mode 1920x1080 --pos 0x1080 --rotate normal --output DP1 --off --output DP2 --off --output HDMI1 --off --output HDMI2 --mode 1920x1080 --pos 0x0 --rotate normal --output VIRTUAL1 --off
     bspc monitor eDP1 -d 1 2 3 4 5
     bspc monitor HDMI2 -d 6 7 8 9 10
+    feh --bg-fill ~/Pictures/Wallpapers/snow.jpg --no-fehbg
 
 # Laptop
 elif echo "$displays" | grep -q "eDP1"; then
@@ -26,5 +27,3 @@ else
     echo "Invalid hostname! Make sure you add your hostname to the script!"
     exit 1
 fi
-
-bspc wm -r

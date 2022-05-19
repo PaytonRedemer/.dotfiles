@@ -1,11 +1,12 @@
 #! /bin/sh
 
 # startup
-~/.local/bin/monitorSetup.sh
+$HOME/.local/bin/monitorSetup.sh
+$HOME/.config/polybar/launch.sh & # bar
 sxhkd -c $HOME/.config/sxhkd/sxhkdrc &
 
-# bar
-$HOME/.config/polybar/launch.sh &
+
+
 
 # bspwm
 bspc config border_width            1

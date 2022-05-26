@@ -51,7 +51,7 @@ keys = [
     Key([mod], "b", lazy.hide_show_bar(), desc="Toggle bar"),
 ]
 
-groups = [Group(i) for i in "123456789"]
+groups = [Group(i) for i in "1234567890"]
 
 for i in groups:
     keys.extend(
@@ -92,8 +92,8 @@ layouts = [
 
 widget_defaults = dict(
     font="sans",
-    fontsize=12,
-    padding=3,
+    fontsize=14,
+    padding=5,
 )
 extension_defaults = widget_defaults.copy()
 
@@ -102,26 +102,31 @@ screens = [
         top=bar.Bar(
             [
                 #widget.CurrentLayout(),
-                widget.GroupBox(),
-                widget.WindowName(),
-                widget.Battery(
-                    padding=5,
-                    charge_char="",
-                    discharge_char="",
-                    empty_char="",
-                    format="🔋 {percent:2.0%}"
+                widget.GroupBox(
+                    rounded = False,
+                    highlight_method = "line",
                     ),
-                widget.PulseVolume(
-                    padding=5,
-                    fmt = '🔊 {}'
+                widget.Spacer(),
+                widget.Wlan(
+                    interface='wlp61s0',
+                    disconnected_message='',
+                    format='{essid}'
+                    ),
+                widget.Volume(
+                    fmt='VOL {}'
+                ),
+                widget.Battery(
+                    charge_char="CHR",
+                    discharge_char="BAT",
+                    empty_char="EMPTY",
+                    format="{char} {percent:2.0%}",
                     ),
                 widget.Clock(
-                    padding=5,
                     format="%a, %b %d %I:%M %P"
                     ),
-                #widget.Systray(padding=5),
+                widget.Systray(),
             ],
-            24,
+            27,
             # border_width=[2, 0, 2, 0],  # Draw top and bottom borders
             # border_color=["ff00ff", "000000", "ff00ff", "000000"]  # Borders are magenta
         ),

@@ -27,3 +27,5 @@ else
     echo "Invalid hostname! Make sure you add your hostname to the script!"
     exit 1
 fi
+
+bspc wm -r

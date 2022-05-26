@@ -9,6 +9,7 @@ bindkey -v
 
 autoload -Uz compinit
 compinit -d ~/.cache/zsh/zcompdump-$ZSH_VERSION
+_comp_options+=(globdots)
 
 alias ls="ls -hN --color=auto --group-directories-first"
 alias grep="grep --color=auto"
@@ -38,3 +39,6 @@ alias g="git"
 alias m="ncmpcpp"
 alias r="ranger"
 alias z="zathura"
+
+# Load syntax highlighting; should be last.
+#source /usr/share/zsh/plugins/fast-syntax-highlighting/fast-syntax-highlighting.plugin.zsh 2>/dev/null

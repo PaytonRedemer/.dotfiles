@@ -40,7 +40,7 @@ super + {_,shift + }q
 #
 
 # send the window to another edge of the screen
-super + {_,shift + }{{h,j,k,l}
+super + {_,shift + }{h,j,k,l}
     bspc node -{f,s} {west,south,north,east}
 
 super + {_,shift + }{Left,Down,Up,Right}

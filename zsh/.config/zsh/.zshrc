@@ -16,10 +16,10 @@ alias grep="grep --color=auto"
 
 alias cp="cp -iv"
 alias mv="mv -iv"
-alias rm="rm -iv"
+alias rm="rm -Iv"
 
 alias p="sudo pacman"
-alias ps="yay -S"
+alias pi="yay -S"
 alias u="yay -Syu"
 alias pr="yay -Rs"
 alias diff="diff --color=auto"

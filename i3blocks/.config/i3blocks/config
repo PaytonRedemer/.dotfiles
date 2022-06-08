@@ -6,10 +6,10 @@ separator_block_width=15
 #interval=3600
 #color=#A4C2F4
 
-[wireless]
-command= echo "<b><span color=\"#F0C674\">$(iwgetid -r)</span></b> $(ip a | grep wlp61s0 | grep inet | grep -oP "\S+?(?=\/)")"
-interval=60
-markup=pango
+# [wireless]
+# command= echo "<b><span color=\"#F0C674\">$(iwgetid -r)</span></b> $(ip a | grep wlp61s0 | grep inet | grep -oP "\S+?(?=\/)")"
+# interval=60
+# markup=pango
 
 [volume]
 label=<b><span color="#F0C674">VOL </span></b>

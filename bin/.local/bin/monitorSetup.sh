@@ -24,6 +24,7 @@ elif echo "$displays" | grep -q "eDP1"; then
     feh --bg-fill ~/Pictures/Wallpapers/snow.jpg --no-fehbg
 
 else
+    feh --bg-fill ~/Pictures/Wallpapers/snow.jpg --no-fehbg
     echo "Invalid hostname! Make sure you add your hostname to the script!"
     exit 1
 fi

@@ -2,10 +2,11 @@
 
 xsetroot -cursor_name left_ptr
 #wmname compiz # Fixes issue with java applications
+vscode-fix.sh
 monitorSetup.sh
 
 # sys-tray
-# nm-applet &
+nm-applet &
 
 # daemons
 sxhkd -c ~/.config/sxhkd/sxhkdrc.common &

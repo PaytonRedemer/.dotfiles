@@ -9,7 +9,7 @@ monitorSetup.sh
 nm-applet &
 
 # daemons
-sxhkd -c ~/.config/sxhkd/sxhkdrc.common &
+sxhkd -c ~/.config/sxhkd/sxhkdrc &
 # udiskie &
 dunst &
 picom &

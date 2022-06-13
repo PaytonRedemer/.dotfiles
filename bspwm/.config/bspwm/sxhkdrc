@@ -1,0 +1,118 @@
+#
+# General bspwm bindings
+#
+
+# reload config files
+super + shift + {w,p,BackSpace}
+    {bspc wm -r,~/.config/polybar/launch.sh,bspc quit}
+
+# toggle gaps
+super + g
+    bspc config window_gap {0,12}
+
+# Change window gap
+super + {minus,equal}
+    bspc config -d focused window_gap $((`bspc config -d focused window_gap` {+,-} 2 ))
+
+# toggle polybar
+super + b
+    {polybar-msg cmd toggle; bspc config top_padding 0, \
+        polybar-msg cmd toggle; bspc config top_padding 27}
+
+# fullscreen
+super + f
+    bspc node -t "~fullscreen"
+
+# toggle floating on and off
+super + shift + f
+    bspc node focused.tiled -t floating || bspc node focused.floating -t tiled
+
+# toggle locked and sticky nodes
+super + shift + {i,s}
+    bspc node -g {locked,sticky}
+
+# close program
+super + {_,shift + }q
+    bspc node -{c,k}
+
+#
+# Window focus and positioning
+#
+
+# send the window to another edge of the screen
+super + {_,shift + }{h,j,k,l}
+    bspc node -{f,s} {west,south,north,east}
+
+super + {_,shift + }{Left,Down,Up,Right}
+    bspc node -{f,s} {west,south,north,east}
+
+# change desktops
+super + {1-9,0}
+    bspc desktop -f {1,2,3,4,5,6,7,8,9,10}
+
+# move node to a another desktop
+super + shift + {1-9,0}
+    bspc node -d {1,2,3,4,5,6,7,8,9,10}
+
+# focus the last node/desktop
+super + {grave,Tab}
+    bspc {node,desktop} -f last
+
+# focus to the largest node or swap the currently focused node with the biggest node
+super + {_,shift +} space
+    bspc node -{f,s} biggest.local
+
+# focus to next or previous monitor
+super + {comma,period}
+    bspc monitor -f {prev,next}
+
+# move node to next or pervious monitor
+super + shift + {comma,period}
+    bspc node -m {prev,next}
+
+#
+# Window resize
+#
+
+# expand/contract a window
+super + control + {h,j,k,l}
+    bspc node -z {left -20 0 || bspc node -z right -20 0, \
+        bottom 0 20 || bspc node -z top 0 20,\
+        top 0 -20 || bspc node -z bottom 0 -20,\
+        right 20 0 || bspc node -z left 20 0}
+
+# move a floating window
+super + ctrl + {Left,Down,Up,Right}
+    bspc node -v {-20 0,0 20,0 -20,20 0}
+
+#
+# Preselect
+#
+
+#preselect the direction
+super + alt + {h,j,k,l}
+    bspc node -p {west,south,north,east}
+
+super + alt + {Left,Down,Up,Right}
+    bspc node -p {west,south,north,east}
+
+# preselect the ratio
+super + alt + {1-9}
+    bspc node -o 0.{1-9}
+
+# cancel the preselection for the focused node
+super + alt + space
+    bspc node -p cancel
+
+#
+# scratchpads
+#
+
+super + shift + Return
+    tdrop -am -y 27 -n 1 $TERMINAL
+
+super + shift + m
+    tdrop -am -y 27 -n 2 $TERMINAL -e ncmpcpp
+
+super + shift + c
+    tdrop -am -y 27 qalculate-gtk

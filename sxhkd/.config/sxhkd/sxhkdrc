@@ -39,7 +39,7 @@ super + shift + r
 
 # volume controls
 XF86Audio{LowerVolume,RaiseVolume,Mute}
-    {pactl set-sink-volume @DEFAULT_SINK@ -5%, pactl set-sink-volume @DEFAULT_SINK@ +5%, pactl set-sink-mute @DEFAULT_SINK@ toggle}
+    {pactl set-sink-volume @DEFAULT_SINK@ -5%, pactl set-sink-volume @DEFAULT_SINK@ +5%, pactl set-sink-mute @DEFAULT_SINK@ toggle} && pkill -SIGRTMIN+10 i3blocks
 
 # brightness controls
 XF86MonBrightness{Down,Up}

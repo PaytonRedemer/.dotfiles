@@ -54,7 +54,7 @@ bindsym $mod+b bar mode toggle
 # gaps
 bindsym $mod+g          gaps inner current toggle $inner_gaps; gaps outer current toggle $outer_gaps
 bindsym $mod+Shift+g    gaps inner current set $inner_gaps; gaps outer current set $outer_gaps
-bindsym $mod+plus	gaps inner current minus 5
+bindsym $mod+plus	    gaps inner current minus 5
 bindsym $mod+minus      gaps inner current plus 5
 
 # resize

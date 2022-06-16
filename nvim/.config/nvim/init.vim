@@ -94,6 +94,13 @@ map <C-j> <C-w>j
 map <C-k> <C-w>k
 map <C-l> <C-w>l
 
+" Use Alt + Vim keys to resize Windows
+nnoremap <silent> <C-M-j>    :resize -2<CR>
+nnoremap <silent> <C-M-k>    :resize +2<CR>
+nnoremap <silent> <C-M-h>    :vertical resize -2<CR>
+nnoremap <silent> <C-M-l>    :vertical resize +2<CR>
+
+
 " Replace ex mode with gq
 map Q gq
 

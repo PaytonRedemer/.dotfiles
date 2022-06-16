@@ -10,8 +10,9 @@ endif
 call plug#begin(system('echo -n "${XDG_CONFIG_HOME:-$HOME/.config}/nvim/plugged"'))
 Plug 'tpope/vim-surround'
 Plug 'preservim/nerdtree'
+Plug 'sheerun/vim-polyglot'
 Plug 'junegunn/goyo.vim'
-Plug 'jreybert/vimagit'
+Plug 'tpope/vim-fugitive'
 Plug 'vimwiki/vimwiki'
 Plug 'tpope/vim-commentary'
 Plug 'ap/vim-css-color'
@@ -22,15 +23,15 @@ call plug#end()
 
 colorscheme onedark
 set title
-set bg=light
 set go=a
 set mouse=a
 set nohlsearch
-" set clipboard+=unnamedplus
+set clipboard+=unnamedplus
 set noshowmode
 set noruler
 set laststatus=2
 set noshowcmd
+set nowrap
 
 " Some basics:
 nnoremap c "_c
@@ -39,6 +40,13 @@ filetype plugin on
 syntax on
 set encoding=utf-8
 set number relativenumber
+set autoindent
+set spell
+set cursorline
+
+" I disable Vim swap & backup files, because they bug me.
+set noswapfile
+set nobackup
 
 
 
@@ -126,11 +134,6 @@ autocmd BufWritePre * %s/\s\+$//e
 autocmd BufWritePre * %s/\n\+\%$//e
 autocmd BufWritePre *.[ch] %s/\%$/\r/e
 
-" Run xrdb whenever Xdefaults or Xresources are updated.
-autocmd BufRead,BufNewFile Xresources,Xdefaults,xresources,xdefaults set filetype=xdefaults
-autocmd BufWritePost Xresources,Xdefaults,xresources,xdefaults !xrdb %
-" Recompile dwmblocks on config edit.
-autocmd BufWritePost ~/.local/src/dwmblocks/config.h !cd ~/.local/src/dwmblocks/; sudo make install && { killall -q dwmblocks;setsid -f dwmblocks }
 
 " Turns off highlighting on the bits of code that are changed, so the line that is changed is highlighted but the actual text that has changed stands out on the line and is readable.
 if &diff

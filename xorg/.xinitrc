@@ -6,7 +6,7 @@ vscode-fix.sh
 monitorSetup.sh
 
 # sys-tray
-nm-applet &
+# nm-applet &
 
 # daemons
 sxhkd -c ~/.config/sxhkd/sxhkdrc &

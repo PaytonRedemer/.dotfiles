@@ -1,10 +1,10 @@
 separator_block_width=15
 
 # Guess the weather hourly
-#[weather]
-#command=curl -Ss 'https://wttr.in?0&T&Q' | cut -c 16- | head -2 | xargs echo
-#interval=3600
-#color=#A4C2F4
+# [weather]
+# command=curl -Ss 'https://wttr.in?0&T&Q' | cut -c 16- | head -2 | xargs echo
+# interval=3600
+# color=#A4C2F4
 
 # [wireless]
 # command= echo "<b><span color=\"#F0C674\">$(iwgetid -r)</span></b> $(ip a | grep wlp61s0 | grep inet | grep -oP "\S+?(?=\/)")"

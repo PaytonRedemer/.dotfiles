@@ -94,6 +94,7 @@ bindsym $mod+comma focus output left
 bindsym $mod+period focus output right
 bindsym $mod+Shift+comma move output left
 bindsym $mod+Shift+period move output right
+bindsym $mod+Shift+m move output next
 
 # --- Workspaces --- #
 set $ws1 "1"

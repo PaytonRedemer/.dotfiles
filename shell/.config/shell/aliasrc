@@ -1,0 +1,23 @@
+alias ls="ls -hN --color=auto --group-directories-first"
+alias grep="grep --color=auto"
+
+alias cp="cp -iv"
+alias mv="mv -iv"
+alias rm="rm -Iv"
+
+alias p="sudo pacman"
+alias pi="yay -S"
+alias u="yay -Syu"
+alias pr="yay -Rs"
+alias diff="diff --color=auto"
+
+alias h="history"
+alias f='cd $(fd --type directory | fzf)'
+
+
+alias e="$EDITOR"
+alias v="$EDITOR"
+
+alias g="git"
+alias m="ncmpcpp"
+alias r="ranger"

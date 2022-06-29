@@ -1,11 +1,11 @@
 # History
-HISTFILE="${XDG_CACHE_HOME:-$HOME/.cache}/zsh/history"
+HISTFILE="${XDG_CACHE_HOME:-$HOME/.cache}/zsh_history"
 HISTSIZE=100000000
 SAVEHIST=100000000
 
 # Options
 stty stop undef # Disable ctrl-s to freeze terminal.
-setopt autocd appendhistory extendedglob interactive_comments nomatch share_history
+setopt autocd extendedglob histignorealldups interactive_comments nomatch share_history
 
 # Basic auto/tab complete:
 autoload -U compinit

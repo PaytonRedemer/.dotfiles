@@ -16,7 +16,6 @@ floating_modifier $mod
 # --- Window Rules --- #
 for_window [class="^.*"] border pixel 3
 
-
 # --- Startup --- #
 
 # --- Bar --- #
@@ -49,7 +48,7 @@ bindsym $mod+a focus parent
 bindsym $mod+c focus child
 
 # reload the configuration file
-bindsym $mod+Shift+c restart
+bindsym $mod+Shift+w restart
 bindsym $mod+b bar mode toggle
 
 # gaps

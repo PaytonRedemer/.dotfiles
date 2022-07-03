@@ -1,0 +1,13 @@
+#!/bin/sh
+# Script to control to laptop backlight and display notification with new brightness percentage
+
+case $1 in
+    up)
+        xbacklight -inc 5
+        dunstify -u low -t 3000 -r 90210 " $(printf %.0f%% $(xbacklight -get))";
+        ;;
+    down)
+        xbacklight -dec 5
+        dunstify -u low -t 3000 -r 90210 " $(printf %.0f%% $(xbacklight -get))";
+        ;;
+esac

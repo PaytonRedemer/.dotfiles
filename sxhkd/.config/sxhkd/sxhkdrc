@@ -21,32 +21,28 @@ super + o ; {b,d,f,o,p,r,s,t,v,z}
 super + {m,r,XF86AudioMute}
     $TERMINAL -e {ncmpcpp,ranger,pulsemixer}
 
-# lockscreen
-super + Escape
-    betterlockscreen -l dim
+#
+# system controls
+#
 
-# toggle compositor
-super + c
-    killall picom || picom
+XF86Audio{LowerVolume,RaiseVolume,Mute,MicMute}
+    volume-ctl {down,up,mute,mute-input}
+
+# brightness controls
+XF86MonBrightness{Down,Up}
+    brightness-ctl {down,up}
 
 # reload sxhkd
 super + shift + r
     pkill -USR1 -x sxhkd
 
-#
-# system controls
-#
+# toggle compositor
+super + shift + c
+    killall picom || picom
 
-# volume controls
-#XF86Audio{LowerVolume,RaiseVolume,Mute}
-#    {pactl set-sink-volume @DEFAULT_SINK@ -5%, pactl set-sink-volume @DEFAULT_SINK@ +5%, pactl set-sink-mute @DEFAULT_SINK@ toggle} && pkill -SIGRTMIN+10 i3blocks
-
-XF86Audio{LowerVolume,RaiseVolume,Mute,MicMute}
-    pulseaudio-ctl {down,up,mute,mute-input} && pkill -SIGRTMIN+10 i3blocks
-
-# brightness controls
-XF86MonBrightness{Down,Up}
-    xbacklight {-dec 5,-inc 5} && dunstify -u low -t 3000 -r 90210 " $(printf %.0f%% $(xbacklight -get))"
+# lockscreen
+super + Escape
+    betterlockscreen -l dim
 
 # suspend on laptop close
 XF86Sleep
@@ -58,9 +54,3 @@ XF86Sleep
 
 super + p
     bwmenu
-
-super + x
-    textbooks.sh
-
-super + shift + b
-    microsoftBG.sh

@@ -7,7 +7,7 @@ super + Return
     $TERMINAL
 
 # program launcher
-super + d
+super + p
     rofi -combi-modi drun,window,ssh -show combi
 
 # gui programs
@@ -25,8 +25,19 @@ super + {m,r,XF86AudioMute}
 # system controls
 #
 
+# volume controls
 XF86Audio{LowerVolume,RaiseVolume,Mute,MicMute}
     volume-ctl {down,up,mute,mute-input}
+
+super + {minus,equal}
+    volume-ctl {down,up,mute,mute-input}
+
+# music player controls
+XF86Audio{Prev,Play,Next}
+    playerctl {previous,play-pause,next}
+
+super + ctrl + {comma,p,period}
+    playerctl {previous,play-pause,next}
 
 # brightness controls
 XF86MonBrightness{Down,Up}
@@ -52,5 +63,5 @@ XF86Sleep
 # rofi
 #
 
-super + p
+super + shift + p
     bwmenu

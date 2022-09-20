@@ -1,4 +1,4 @@
-from libqtile.config import Click, Drag, Group, Key
+from libqtile.config import Click, Drag, Group, Key, Match
 from libqtile.lazy import lazy
 from libqtile.utils import guess_terminal
 
@@ -26,12 +26,12 @@ keys = [
     Key([mod, "control"], "l", lazy.layout.grow_right(), desc="Grow window to the right"),
     Key([mod, "control"], "j", lazy.layout.grow_down(), desc="Grow window down"),
     Key([mod, "control"], "k", lazy.layout.grow_up(), desc="Grow window up"),
+    Key([mod], "n", lazy.layout.normalize(), desc="Reset all window sizes"),
 
     # Multiple monitors
     Key([mod], "period", lazy.prev_screen(), desc="Move focus to previous monitor"),
     Key([mod], "comma", lazy.next_screen(), desc="Move focus to next monitor"),
 
-    Key([mod], "n", lazy.layout.normalize(), desc="Reset all window sizes"),
     # Toggle between split and unsplit sides of stack.
     # Split = all windows displayed
     # Unsplit = 1 window displayed, like Max layout, but still with
@@ -47,32 +47,43 @@ keys = [
     Key([mod], "q", lazy.window.kill(), desc="Kill focused window"),
     Key([mod, "control"], "r", lazy.reload_config(), desc="Reload the config"),
     Key([mod, "control"], "q", lazy.shutdown(), desc="Shutdown Qtile"),
-    Key([mod], "r", lazy.spawncmd(), desc="Spawn a command using a prompt widget"),
     Key([mod], "f", lazy.window.toggle_fullscreen(), desc="Put the focused window to/from fullscreen mode"),
     Key([mod], "b", lazy.hide_show_bar(), desc="Toggle bar"),
 ]
 
-groups = [Group(i) for i in "1234567890"]
+workspaces = [
+    {"name": "home", "key": "1", "label": ""},
+    {"name": "WWW", "key": "2", "label": "", "matches": [Match(wm_class=["Chromium-browser", "Firefox", "Brave-browser"])]},
+    {"name": "DEV", "key": "3","label": ""},
+    {"name": "DOC", "key": "4", "label": "", "matches": [Match(wm_class=["Zathura"])]},
+    {"name": "MISC", "key": "5", "label": ""},
+    {"name": "CHAT", "key": "6", "label": "", "matches": [Match(wm_class=["Slack", "discord", "zoom"])]},
+    {"name": "SSH", "key": "7", "label": ""},
+    {"name": "VIRT", "key": "8", "label": "", "matches": [Match(wm_class=["VirtualBox"])]},
+    {"name": "VID", "key": "9", "label": "", "matches": [Match(wm_class=["mpv"])]},
+    {"name": "MUS", "key": "0", "label": "", "matches": [Match(wm_class=["Spotify"])]},
+]
 
-
-for i in groups:
-    keys.extend(
-        [
-            Key(
-                [mod],
-                i.name,
-                lazy.group[i.name].toscreen(),
-                desc="Switch to group {}".format(i.name),
-            ),
-
-            Key(
-                [mod, "shift"],
-                i.name,
-                lazy.window.togroup(i.name),
-                desc="move focused window to group {}".format(i.name)),
-        ]
+groups = []
+for workspace in workspaces:
+    matches = workspace["matches"] if "matches" in workspace else None
+    groups.append(Group(workspace["name"], label=workspace["label"], matches=matches))
+    keys.append(
+        Key(
+            [mod],
+            workspace["key"],
+            lazy.group[workspace["name"]].toscreen(),
+            desc="Focus this desktop",
+        )
     )
-
+    keys.append(
+        Key(
+            [mod, "shift"],
+            workspace["key"],
+            lazy.window.togroup(workspace["name"]),
+            desc="Move focused window to another group",
+        )
+    )
 
 # Drag floating layouts.
 mouse = [

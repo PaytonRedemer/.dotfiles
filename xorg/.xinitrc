@@ -17,6 +17,6 @@ picom &
 # mopidy &
 
 # wm
-dwmbar &
-exec dbus-launch dwm
-# exec qtile start
+# dwmbar &
+# exec dbus-launch i3
+exec dbus-launch qtile start

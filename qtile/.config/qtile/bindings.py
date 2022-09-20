@@ -48,6 +48,7 @@ keys = [
     Key([mod, "control"], "r", lazy.reload_config(), desc="Reload the config"),
     Key([mod, "control"], "q", lazy.shutdown(), desc="Shutdown Qtile"),
     Key([mod], "f", lazy.window.toggle_fullscreen(), desc="Put the focused window to/from fullscreen mode"),
+    Key([mod, "shift"], "space", lazy.window.toggle_floating(), desc='Toggle floating'),
     Key([mod], "b", lazy.hide_show_bar(), desc="Toggle bar"),
 ]
 

@@ -18,9 +18,10 @@ Plug 'tpope/vim-commentary'
 Plug 'ap/vim-css-color'
 Plug 'joshdick/onedark.vim'
 Plug 'itchyny/lightline.vim'
+Plug 'rebelot/kanagawa.nvim'
 call plug#end()
 
-colorscheme onedark
+colorscheme kanagawa
 set title
 set go=a
 set mouse=a

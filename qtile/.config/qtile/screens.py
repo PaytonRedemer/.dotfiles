@@ -29,16 +29,11 @@ def init_widgets():
     widget_list = [
         #widget.CurrentLayout(),
         widget.GroupBox(
-            #urgent_alert_method="text",
-            active=colors["foreground"],
-            inactive=colors["color13"],
+            disable_drag=True,
             highlight_method="block",
-            # urgent_border=colors["color17"],
-            # this_screen_border=colors["color15"],
-            # other_screen_border="#2A2A37",
-            rounded=False,
-            fontsize=18,
-            hide_unused=False,
+            rounded=True,
+            hide_unused=True,
+            block_highlight_text_color="#FFFFFF"
             ),
         widget.Spacer(),
         widget.Wlan(

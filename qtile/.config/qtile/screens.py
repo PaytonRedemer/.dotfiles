@@ -62,7 +62,7 @@ def init_widgets():
 
 def init_widgets_systray():
     widget_list = init_widgets()
-    widget_list.append(widget.Systray())
+    widget_list.append(widget.Systray(padding=0))
     return widget_list
 
 bar_size = 27

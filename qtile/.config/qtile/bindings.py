@@ -1,9 +1,9 @@
 from libqtile.config import Click, Drag, Group, Key, Match
 from libqtile.lazy import lazy
-from libqtile.utils import guess_terminal
+
+from scratchpads import scratchpads, scratchpad_keybindings
 
 mod = "mod4"
-terminal = guess_terminal()
 
 keys = [
     # Switch between windows
@@ -38,7 +38,7 @@ keys = [
     # multiple stack panes
     Key(
         [mod, "shift"],
-        "Return",
+        "s",
         lazy.layout.toggle_split(),
         desc="Toggle between split and unsplit sides of stack",
     ),
@@ -85,6 +85,10 @@ for workspace in workspaces:
             desc="Move focused window to another group",
         )
     )
+
+# Scratchpad
+groups.append(scratchpads)
+keys.extend(scratchpad_keybindings)
 
 # Drag floating layouts.
 mouse = [

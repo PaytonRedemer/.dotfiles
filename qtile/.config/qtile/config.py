@@ -1,7 +1,7 @@
 from libqtile import layout
 from libqtile.config import Match
-from bindings import *
-from screens import *
+from bindings import keys, groups, mouse
+from screens import screens, colors
 
 layout_theme = {
     "border_width": 1,
@@ -27,8 +27,9 @@ layouts = [
 
 widget_defaults = dict(
     font="FiraCode Nerd Font Mono",
-    fontsize=14,
+    fontsize=15,
     padding=5,
+    foreground="#FFFFFF",
 )
 extension_defaults = widget_defaults.copy()
 

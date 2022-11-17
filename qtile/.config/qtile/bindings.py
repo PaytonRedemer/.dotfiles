@@ -29,8 +29,8 @@ keys = [
     Key([mod], "n", lazy.layout.normalize(), desc="Reset all window sizes"),
 
     # Multiple monitors
-    Key([mod], "period", lazy.prev_screen(), desc="Move focus to previous monitor"),
-    Key([mod], "comma", lazy.next_screen(), desc="Move focus to next monitor"),
+    Key([mod], "comma", lazy.prev_screen(), desc="Move focus to previous monitor"),
+    Key([mod], "period", lazy.next_screen(), desc="Move focus to next monitor"),
 
     # Toggle between split and unsplit sides of stack.
     # Split = all windows displayed
@@ -52,38 +52,30 @@ keys = [
     Key([mod], "b", lazy.hide_show_bar(), desc="Toggle bar"),
 ]
 
-workspaces = [
-    {"name": "home", "key": "1", "label": ""},
-    {"name": "WWW", "key": "2", "label": "", "matches": [Match(wm_class=["Chromium-browser", "Firefox", "Brave-browser"])]},
-    {"name": "DEV", "key": "3","label": ""},
-    {"name": "DOC", "key": "4", "label": "", "matches": [Match(wm_class=["Zathura"])]},
-    {"name": "MISC", "key": "5", "label": ""},
-    {"name": "CHAT", "key": "6", "label": "", "matches": [Match(wm_class=["Slack", "discord", "zoom"])]},
-    {"name": "SSH", "key": "7", "label": ""},
-    {"name": "VIRT", "key": "8", "label": "", "matches": [Match(wm_class=["VirtualBox"])]},
-    {"name": "VID", "key": "9", "label": "", "matches": [Match(wm_class=["mpv"])]},
-    {"name": "MUS", "key": "0", "label": "", "matches": [Match(wm_class=["Spotify"])]},
-]
+groups = [Group(i) for i in "1234567890"]
 
-groups = []
-for workspace in workspaces:
-    matches = workspace["matches"] if "matches" in workspace else None
-    groups.append(Group(workspace["name"], label=workspace["label"], matches=matches))
-    keys.append(
-        Key(
-            [mod],
-            workspace["key"],
-            lazy.group[workspace["name"]].toscreen(),
-            desc="Focus this desktop",
-        )
-    )
-    keys.append(
-        Key(
-            [mod, "shift"],
-            workspace["key"],
-            lazy.window.togroup(workspace["name"]),
-            desc="Move focused window to another group",
-        )
+for i in groups:
+    keys.extend(
+        [
+            # mod1 + letter of group = switch to group
+            Key(
+                [mod],
+                i.name,
+                lazy.group[i.name].toscreen(),
+                desc="Switch to group {}".format(i.name),
+            ),
+            # mod1 + shift + letter of group = switch to & move focused window to group
+            Key(
+                [mod, "shift"],
+                i.name,
+                lazy.window.togroup(i.name, switch_group=False),
+                desc="Switch to & move focused window to group {}".format(i.name),
+            ),
+            # Or, use below if you prefer not to switch to that group.
+            # # mod1 + shift + letter of group = move focused window to group
+            # Key([mod, "shift"], i.name, lazy.window.togroup(i.name),
+            #     desc="move focused window to group {}".format(i.name)),
+        ]
     )
 
 # Scratchpad
@@ -96,3 +88,28 @@ mouse = [
     Drag([mod], "Button3", lazy.window.set_size_floating(), start=lazy.window.get_size()),
     Click([mod], "Button2", lazy.window.bring_to_front()),
 ]
+
+
+def window_to_previous_screen(qtile, switch_group=False, switch_screen=False):
+    i = qtile.screens.index(qtile.current_screen)
+    group = qtile.screens[i - 1].group.name
+    qtile.current_window.togroup(group, switch_group=switch_group)
+    if switch_screen == True:
+        qtile.cmd_to_screen(i - 1)
+
+def window_to_next_screen(qtile, switch_group=False, switch_screen=False):
+    i = qtile.screens.index(qtile.current_screen)
+    if i + 1 != len(qtile.screens):
+        group = qtile.screens[i + 1].group.name
+    else:
+        group = qtile.screens[0].group.name
+    qtile.current_window.togroup(group, switch_group=switch_group)
+    if switch_screen == True:
+        qtile.cmd_to_screen(i + 1)
+
+keys.extend([
+    Key([mod,"shift"],  "comma", lazy.function(window_to_previous_screen)),
+    Key([mod,"shift"],  "period",  lazy.function(window_to_next_screen)),
+    # Key([mod,"control"],"comma",  lazy.function(window_to_next_screen, switch_screen=True)),
+    # Key([mod,"control"],"period", lazy.function(window_to_previous_screen, switch_screen=True)),
+])

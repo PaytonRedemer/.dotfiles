@@ -3,9 +3,44 @@ from libqtile.lazy import lazy
 
 from scratchpads import scratchpads, scratchpad_keybindings
 
+import os
+
 mod = "mod4"
+terminal = os.environ.get("TERMINAL")
+launcher = "rofi -combi-modi drun,window,ssh -show combi"
+browser = os.environ.get("BROWSER")
 
 keys = [
+    # Launch programs
+    Key([mod], "Return", lazy.spawn(terminal)),
+    Key([mod], "p", lazy.spawn(launcher)),
+    Key([mod], "w", lazy.spawn(browser)),
+    Key([mod], "z", lazy.spawn("flameshot gui")),
+
+    # terminal programs
+    Key([mod, "shift"], "m", lazy.spawn(terminal + " -e ncmpcpp")),
+    Key([mod, "shift"], "e", lazy.spawn(terminal + " -e neomutt")),
+    Key([mod, "shift"], "r", lazy.spawn(terminal + " -e ranger")),
+
+    # volume controls
+    Key([mod], "minus", lazy.spawn("volume-ctl down")),
+    Key([mod], "equal", lazy.spawn("volume-ctl up")),
+
+    Key([], "XF86AudioLowerVolume", lazy.spawn("volume-ctl down")),
+    Key([], "XF86AudioRaiseVolume", lazy.spawn("volume-ctl up")),
+    Key([], "XF86AudioMute", lazy.spawn("volume-ctl mute")),
+    Key([], "XF86AudioMicMute", lazy.spawn("volume-ctl mute-input")),
+
+    # brightness controls
+    Key([], "XF86MonBrightnessDown", lazy.spawn("brightness-ctl down")),
+    Key([], "XF86MonBrightnessUp", lazy.spawn("brightness-ctl up")),
+
+    # music controls
+    Key([mod, "control"], "comma", lazy.spawn("playerctl previous")),
+    Key([mod, "control"], "p", lazy.spawn("playerctl play-pause")),
+    Key([mod, "control"], "period", lazy.spawn("playerctl next")),
+
+
     # Switch between windows
     Key([mod], "h", lazy.layout.left(), desc="Move focus to left"),
     Key([mod], "l", lazy.layout.right(), desc="Move focus to right"),
@@ -50,6 +85,7 @@ keys = [
     Key([mod], "f", lazy.window.toggle_fullscreen(), desc="Put the focused window to/from fullscreen mode"),
     Key([mod, "shift"], "space", lazy.window.toggle_floating(), desc='Toggle floating'),
     Key([mod], "b", lazy.hide_show_bar(), desc="Toggle bar"),
+    Key([mod], "escape", lazy.spawn("xscreensaver-command -lock")),
 ]
 
 groups = [Group(i) for i in "1234567890"]
@@ -89,6 +125,7 @@ mouse = [
     Click([mod], "Button2", lazy.window.bring_to_front()),
 ]
 
+# TODO: I think switch screen needs to be fixed for both functions
 
 def window_to_previous_screen(qtile, switch_group=False, switch_screen=False):
     i = qtile.screens.index(qtile.current_screen)

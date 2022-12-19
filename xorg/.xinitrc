@@ -6,11 +6,11 @@ xsetroot -cursor_name left_ptr
 monitorSetup.sh
 
 # sys-tray
-# nm-applet &
-# blueman-applet &
+nm-applet &
+blueman-applet &
 
 # daemons
-sxhkd -c ~/.config/sxhkd/sxhkdrc &
+# sxhkd -c ~/.config/sxhkd/sxhkdrc &
 udiskie &
 dunst &
 picom &

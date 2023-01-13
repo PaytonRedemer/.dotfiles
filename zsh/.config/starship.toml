@@ -1,19 +1,24 @@
+format = """
+$username\
+$hostname\
+$directory\
+$git_branch\
+$git_commit\
+$git_state\
+$git_status\
+$git_metrics\
+$fill\
+$all\
+$line_break\
+$character
+"""
+
 # Don't print a new line at the start of the prompt
 add_newline = false
 
 # Make prompt a single line instead of two lines
 [line_break]
 disabled = false
-
-# Replace the "❯" symbol in the prompt with "➜"
-# [character]                         # The name of the module we are configuring is "character"
-# success_symbol = "[➜](bold green)"  # The "success_symbol" is set to "➜" with color "bold green"
-
-# Use custom format
-# format = """
-# [┌───────────────────>](bold green)
-# [│](bold green)$directory$rust$package
-# [└─>](bold green) """
 
 # Disable the package module, hiding it from the prompt completely
 [package]
@@ -33,5 +38,31 @@ trim_at = ".companyname.com"
 disabled = false
 
 [directory]
+truncate_to_repo = false
 truncation_length = 8
 style = "green"
+
+[git_branch]
+symbol = ' '
+format = '[$symbol$branch(:$remote_branch)]($style) '
+# ignore_branches = ['master', 'main']
+
+[git_commit]
+format = '[$hash$tag]($style) '
+
+[git_metrics]
+disabled = false
+
+[fill]
+symbol = " "
+
+[cmd_duration]
+format = '[$duration]($style) '
+
+[time]
+disabled = true
+format = '[$time]($style) '
+time_format = '%T' 
+
+[gcloud]
+disabled = true

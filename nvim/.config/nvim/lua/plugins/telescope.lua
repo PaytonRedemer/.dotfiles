@@ -13,10 +13,10 @@ return {
 
     keys = {
       { "<leader>ff", builtin("find_files"), desc = "Files" },
-      -- { "<leader>fg", builtin("live_grep"), desc = "Grep" },
+      { "<leader>fg", builtin("live_grep"), desc = "Grep" },
       { "<leader>fb", builtin("buffers"), desc = "Buffers"},
       { "<leader>fh", builtin("help_tags"), desc = "Help"},
-      { "<leader>fg", builtin("git_files"), desc = "Git" },
+      { "<leader>fp", builtin("git_files"), desc = "Git" },
     },
   },
 }

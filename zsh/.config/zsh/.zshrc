@@ -17,6 +17,10 @@ _comp_options+=(globdots) # Include hidden files.
 # Load aliases
 [ -f "${XDG_CONFIG_HOME:-$HOME/.config}/shell/aliasrc" ] && source "${XDG_CONFIG_HOME:-$HOME/.config}/shell/aliasrc"
 
+if command -v bat &> /dev/null ; then
+    alias cat="bat --paging=never"
+fi
+
 # Bindings
 # TODO: Change cursor in different vim modes
 bindkey -v # vi mode

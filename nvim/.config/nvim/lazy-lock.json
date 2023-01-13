@@ -4,7 +4,9 @@
   "lazy.nvim": { "branch": "main", "commit": "666ed7bf73eb5895253c1155bd29270b066cbdac" },
   "mini.comment": { "branch": "main", "commit": "a0f543e7846f67d10cbed5f2dce72eb26d0ca96b" },
   "nvim-treesitter": { "branch": "master", "commit": "51d220e0bd8922caabcb3e5de936fc599a1bd210" },
+  "nvim-web-devicons": { "branch": "master", "commit": "6c38926351372ea87034dec26182b62c835ff3bc" },
   "plenary.nvim": { "branch": "master", "commit": "1c7e3e6b0f4dd5a174fcea9fda8a4d7de593b826" },
+  "telescope-file-browser.nvim": { "branch": "master", "commit": "304508fb7bea78e3c0eeddd88c4837501e403ae8" },
   "telescope.nvim": { "branch": "master", "commit": "1ba7278cf08da8048e7f589ef6b65a39fd3e4dbf" },
   "toggleterm.nvim": { "branch": "main", "commit": "a54e6c471ce1cd8ef8357e34598a28a955297131" },
   "vim-fugitive": { "branch": "master", "commit": "9c5f675db54139c18ed4a1a18989ea2da37d6cae" }

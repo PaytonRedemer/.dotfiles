@@ -16,6 +16,7 @@ keys = [
     Key([mod], "p", lazy.spawn(launcher)),
     Key([mod], "w", lazy.spawn(browser)),
     Key([mod], "z", lazy.spawn("flameshot gui")),
+    Key([mod, "shift"], "p", lazy.spawn("rofi-rbw")),
 
     # terminal programs
     Key([mod, "shift"], "m", lazy.spawn(terminal + " -e ncmpcpp")),
@@ -39,7 +40,6 @@ keys = [
     Key([mod, "control"], "comma", lazy.spawn("playerctl previous")),
     Key([mod, "control"], "p", lazy.spawn("playerctl play-pause")),
     Key([mod, "control"], "period", lazy.spawn("playerctl next")),
-
 
     # Switch between windows
     Key([mod], "h", lazy.layout.left(), desc="Move focus to left"),

@@ -34,4 +34,7 @@ fhe() {
 
 # requires zsh-fast-syntax-highlighting package from AUR
 source /usr/share/zsh/plugins/fast-syntax-highlighting/fast-syntax-highlighting.plugin.zsh 2>/dev/null
+
+[[ -r "/usr/share/z/z.sh" ]] && source /usr/share/z/z.sh
+
 eval "$(starship init zsh)"

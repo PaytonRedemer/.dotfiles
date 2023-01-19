@@ -10,7 +10,7 @@ nm-applet &
 blueman-applet &
 
 # daemons
-# sxhkd -c ~/.config/sxhkd/sxhkdrc &
+sxhkd -c ~/.config/sxhkd/sxhkdrc &
 udiskie &
 dunst &
 picom &
@@ -18,5 +18,5 @@ picom &
 
 # wm
 # dwmbar &
-# exec dbus-launch i3
-exec dbus-launch qtile start
+exec dbus-launch i3
+# exec dbus-launch qtile start

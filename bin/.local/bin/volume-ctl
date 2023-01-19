@@ -20,4 +20,4 @@ case $1 in
         ;;
 esac
 
-# pkill -SIGRTMIN+$signal $blocks
+pkill -SIGRTMIN+$signal $blocks

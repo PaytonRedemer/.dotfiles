@@ -1,32 +1,19 @@
 separator_block_width=15
 
-# Guess the weather hourly
-# [weather]
-# command=curl -Ss 'https://wttr.in?0&T&Q' | cut -c 16- | head -2 | xargs echo
-# interval=3600
-# color=#A4C2F4
-
-# [wireless]
-# command= echo "<b><span color=\"#F0C674\">$(iwgetid -r)</span></b> $(ip a | grep wlp61s0 | grep inet | grep -oP "\S+?(?=\/)")"
-# interval=60
-# markup=pango
-
 [volume]
-label=<b><span color="#F0C674">VOL </span></b>
 command=~/.local/bin/volume
 interval=once
 markup=pango
 signal=10
 
 [battery]
-label=<b><span color="#F0C674">BAT </span></b>
-command=echo "$(cat /sys/class/power_supply/BAT0/capacity)%"
+command=echo "$(cat /sys/class/power_supply/BAT0/capacity)"
 interval=30
 markup=pango
 
 # Update time every 1 seconds
 [time]
-command=echo "$(date '+%a, %b %d') <b>$(date '+%I:%M:%S %p')</b> "
+command=~/.local/bin/time
 interval=1
-color=#F0C674
-markup=pango
+# color=#F0C674
+# markup=pango

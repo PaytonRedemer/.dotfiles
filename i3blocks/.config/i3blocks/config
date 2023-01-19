@@ -7,7 +7,7 @@ markup=pango
 signal=10
 
 [battery]
-command=echo "$(cat /sys/class/power_supply/BAT0/capacity)"
+command=~/.local/bin/battery
 interval=30
 markup=pango
 

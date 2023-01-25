@@ -1,13 +1,14 @@
-# History
-HISTFILE="${XDG_CACHE_HOME:-$HOME/.cache}/zsh_history"
-HISTSIZE=100000000
-SAVEHIST=100000000
-
+# Prompt
 autoload -Uz vcs_info
 precmd() { vcs_info }
 setopt prompt_subst
 zstyle ':vcs_info:git:*' formats '(%b) '
 PROMPT='%F{green}%n@%m%f %F{blue}%~%f %F{red}${vcs_info_msg_0_}%f'$'\n''-> '
+
+# History
+HISTFILE="${XDG_CACHE_HOME:-$HOME/.cache}/zsh_history"
+HISTSIZE=100000000
+SAVEHIST=100000000
 
 # Options
 stty stop undef # Disable ctrl-s to freeze terminal.
@@ -28,19 +29,9 @@ if command -v bat &> /dev/null ; then
 fi
 
 # Bindings
-# TODO: Change cursor in different vim modes
 bindkey -v # vi mode
-bindkey -s '^r' 'fh^M'
+bindkey '^r' history-incremental-search-backward
 bindkey -s '^o' '. ranger^M'
-
-# fh - repeat history
-fh() {
-  eval $( ([ -n "$ZSH_NAME" ] && fc -l 1 || history) | fzf +s --tac | sed -E 's/ *[0-9]*\*? *//' | sed -E 's/\\/\\\\/g')
-}
-
-fhe() {
-    print -z $( ([ -n "$ZSH_NAME" ] && fc -l 1 || history) | fzf +s --tac | sed -E 's/ *[0-9]*\*? *//' | sed -E 's/\\/\\\\/g')
-}
 
 # requires zsh-fast-syntax-highlighting package from AUR
 source /usr/share/zsh/plugins/fast-syntax-highlighting/fast-syntax-highlighting.plugin.zsh 2>/dev/null

@@ -3,6 +3,12 @@ HISTFILE="${XDG_CACHE_HOME:-$HOME/.cache}/zsh_history"
 HISTSIZE=100000000
 SAVEHIST=100000000
 
+autoload -Uz vcs_info
+precmd() { vcs_info }
+setopt prompt_subst
+zstyle ':vcs_info:git:*' formats '(%b) '
+PROMPT='%F{green}%n@%m%f %F{blue}%~%f %F{red}${vcs_info_msg_0_}%f'$'\n''-> '
+
 # Options
 stty stop undef # Disable ctrl-s to freeze terminal.
 setopt autocd extendedglob histignorealldups interactive_comments nomatch share_history
@@ -40,5 +46,3 @@ fhe() {
 source /usr/share/zsh/plugins/fast-syntax-highlighting/fast-syntax-highlighting.plugin.zsh 2>/dev/null
 
 [[ -r "/usr/share/z/z.sh" ]] && source /usr/share/z/z.sh
-
-eval "$(starship init zsh)"

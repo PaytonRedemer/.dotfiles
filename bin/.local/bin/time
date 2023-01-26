@@ -1,6 +1,0 @@
-#!/bin/sh
-
-date="$(date '+%a, %b %d')"
-time="$(date '+%I:%M:%S %p')"
-
-echo "  $date $time  "

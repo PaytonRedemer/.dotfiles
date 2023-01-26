@@ -6,9 +6,9 @@ from scratchpads import scratchpads, scratchpad_keybindings
 import os
 
 mod = "mod4"
-terminal = os.environ.get("TERMINAL")
+terminal = os.environ.get("TERMINAL") or "xterm"
 launcher = "rofi -combi-modi drun,window,ssh -show combi"
-browser = os.environ.get("BROWSER")
+browser = os.environ.get("BROWSER") or "firefox"
 
 keys = [
     # Launch programs

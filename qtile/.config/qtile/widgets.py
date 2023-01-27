@@ -45,6 +45,3 @@ def init_widgets_systray():
     widget_list = init_widgets()
     widget_list.append(widget.Systray(padding=0))
     return widget_list
-
-widgets = init_widgets
-systray_widgets = init_widgets_systray

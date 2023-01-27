@@ -4,7 +4,7 @@ displays=$(xrandr | grep " connected " | awk '{ print$1 }')
 
 # Triple monitors
 if echo "$displays" | grep -q "HDMI-0"; then
-    xrandr --output DP-1 --auto --rotate left --pos 0x-270 --output DP-2 --primary --auto --rate 144 --pos 1080x0 --output HDMI-0 --auto --pos 3000x0
+    xrandr --output DP-3 --auto --rotate left --pos 0x-270 --output DP-0 --primary --auto --rate 144 --pos 1080x0 --output HDMI-0 --auto --pos 3000x0
     bspc monitor DP1-2 -d 1 2 3 4 5
     bspc monitor DP1-3 -d 6 7 8
     bspc monitor DP1-1 -d 9 10

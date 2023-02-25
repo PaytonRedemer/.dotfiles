@@ -37,8 +37,8 @@ bindsym $mod+Shift+p      exec --no-startup-id "rofi-rbw"
 
 bindsym $mod+z      exec --no-startup-id "flameshot gui"
 
-bindsym $mod+plus   exec --no-startup-id "volume-ctl down"
-bindsym $mod+minus  exec --no-startup-id "volume-ctl up"
+bindsym $mod+plus   exec --no-startup-id "volume-ctl up"
+bindsym $mod+minus  exec --no-startup-id "volume-ctl down"
 
 bindsym XF86AudioLowerVolume exec --no-startup-id "volume-ctl down"
 bindsym XF86AudioRaiseVolume exec --no-startup-id "volume-ctl up"

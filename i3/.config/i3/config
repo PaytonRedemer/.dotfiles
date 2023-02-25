@@ -54,6 +54,9 @@ bindsym $mod+control+comma  exec --no-startup-id "playerctl previous"
 bindsym $mod+control+p      exec --no-startup-id "playerctl play-pause"
 bindsym $mod+control+period exec --no-startup-id "playerctl next"
 
+bindsym $mod+Shift+r move scratchpad
+bindsym $mod+r scratchpad show
+
 bindsym $mod+q kill
 bindsym $mod+f fullscreen toggle
 bindsym $mod+Shift+BackSpace exit

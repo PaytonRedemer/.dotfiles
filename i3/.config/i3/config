@@ -30,32 +30,32 @@ bar {
 
 # --- Keybindings --- #
 bindsym $mod+Return exec --no-startup-id $TERMINAL
-bindsym $mod+w      exec --no-startup-id $BROWSER
-bindsym $mod+p      exec --no-startup-id "rofi -combi-modi drun,window,ssh -show combi"
-bindsym $mod+Shift+p      exec --no-startup-id "rofi-rbw"
+bindsym $mod+w exec --no-startup-id $BROWSER
+bindsym $mod+p exec --no-startup-id "rofi -combi-modi drun,window,ssh -show combi"
+bindsym $mod+Shift+p exec --no-startup-id "rofi-rbw"
 
+bindsym $mod+n exec --no-startup-id "flameshot gui"
 
-bindsym $mod+z      exec --no-startup-id "flameshot gui"
-
-bindsym $mod+plus   exec --no-startup-id "volume-ctl up"
-bindsym $mod+minus  exec --no-startup-id "volume-ctl down"
+bindsym $mod+plus exec --no-startup-id "volume-ctl up"
+bindsym $mod+minus exec --no-startup-id "volume-ctl down"
 
 bindsym XF86AudioLowerVolume exec --no-startup-id "volume-ctl down"
 bindsym XF86AudioRaiseVolume exec --no-startup-id "volume-ctl up"
-bindsym XF86AudioMute        exec --no-startup-id "volume-ctl mute"
-bindsym XF86AudioMicMute     exec --no-startup-id "volume-ctl mute-input"
+bindsym XF86AudioMute exec --no-startup-id "volume-ctl mute"
+bindsym XF86AudioMicMute exec --no-startup-id "volume-ctl mute-input"
 
 
 bindsym XF86MonBrightnessDown exec --no-startup-id "brightness-ctl down"
-bindsym XF86MonBrightnessUp   exec --no-startup-id "brightness-ctl up"
+bindsym XF86MonBrightnessUp exec --no-startup-id "brightness-ctl up"
 
 
-bindsym $mod+control+comma  exec --no-startup-id "playerctl previous"
-bindsym $mod+control+p      exec --no-startup-id "playerctl play-pause"
+bindsym $mod+control+comma exec --no-startup-id "playerctl previous"
+bindsym $mod+control+p exec --no-startup-id "playerctl play-pause"
 bindsym $mod+control+period exec --no-startup-id "playerctl next"
 
 bindsym $mod+Shift+r move scratchpad
 bindsym $mod+r scratchpad show
+bindsym $mod+s sticky toggle
 
 bindsym $mod+q kill
 bindsym $mod+f fullscreen toggle
@@ -63,13 +63,16 @@ bindsym $mod+Shift+BackSpace exit
 
 # layouts
 bindsym $mod+t split toggle
+bindsym $mod+v split vertical
+bindsym $mod+z split horizontal
 bindsym $mod+Shift+d layout default
 bindsym $mod+Shift+s layout stacking
 bindsym $mod+Shift+t layout tabbed
 
 # toggle tiling / floating
-bindsym $mod+Shift+f floating toggle
-bindsym $mod+space focus mode_toggle
+# bindsym $mod+Shift+f floating toggle
+bindsym $mod+space floating toggle
+# bindsym $mod+space focus mode_toggle
 
 bindsym $mod+a focus parent
 bindsym $mod+c focus child
@@ -79,16 +82,16 @@ bindsym $mod+Shift+w restart
 bindsym $mod+b bar mode toggle
 
 # gaps
-bindsym $mod+g              gaps inner current toggle $inner_gaps; gaps outer current toggle $outer_gaps
-bindsym $mod+Shift+g        gaps inner current set $inner_gaps; gaps outer current set $outer_gaps
-bindsym $mod+Shift+plus	    gaps inner current minus 5
-bindsym $mod+Shift+minus    gaps inner current plus 5
+bindsym $mod+g gaps inner current toggle $inner_gaps; gaps outer current toggle $outer_gaps
+bindsym $mod+Shift+g gaps inner current set $inner_gaps; gaps outer current set $outer_gaps
+bindsym $mod+Shift+plus	gaps inner current minus 5
+bindsym $mod+Shift+minus gaps inner current plus 5
 
 # resize
-bindsym $mod+Control+h		exec --no-startup-id i3resize left
-bindsym $mod+Control+j		exec --no-startup-id i3resize down
-bindsym $mod+Control+k		exec --no-startup-id i3resize up
-bindsym $mod+Control+l		exec --no-startup-id i3resize right
+bindsym $mod+Control+h exec --no-startup-id i3resize left
+bindsym $mod+Control+j exec --no-startup-id i3resize down
+bindsym $mod+Control+k exec --no-startup-id i3resize up
+bindsym $mod+Control+l exec --no-startup-id i3resize right
 
 # --- Change focus and move window --- #
 

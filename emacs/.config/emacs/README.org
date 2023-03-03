@@ -1,3 +1,11 @@
+#+TITLE: Emacs Config
+#+AUTHOR: Payton Redemer
+#+PROPERTY: header-args :tangle init.el
+#+auto_tangle: t
+#+STARTUP: showeverything
+
+** Setup use-package
+#+begin_src emacs-lisp
 (setq package-archives 
       '(("melpa" . "https://melpa.org/packages/")
         ("elpa" . "https://elpa.gnu.org/packages/")))
@@ -8,11 +16,17 @@
   (package-refresh-contents)
   (package-install 'use-package))
 (eval-when-compile (require 'use-package))
+#+end_src
 
+** Theme
+#+begin_src emacs-lisp
 (use-package doom-themes
   :config
   (load-theme `doom-one t))
+#+end_src
 
+** UI
+#+begin_src emacs-lisp
 (menu-bar-mode -1) 
 (scroll-bar-mode -1) 
 (tool-bar-mode -1)
@@ -20,9 +34,15 @@
 (fringe-mode -1)
 
 (setq inhibit-startup-screen t)
+#+end_src
 
+** Basic settings
+#+begin_src emacs-lisp
 (setq custom-file (expand-file-name "custom.el" user-emacs-directory))
+#+end_src
 
+** Evil mode
+#+begin_src emacs-lisp
 (use-package evil
   :demand t
   :bind (("<escape>" . keyboard-escape-quit))
@@ -41,7 +61,11 @@
   :config
   (setq evil-want-integration t)
   (evil-collection-init))
+#+end_src
 
+
+** Dashboard
+#+begin_src emacs-lisp
 (use-package dashboard
   :ensure t
   :config
@@ -52,7 +76,10 @@
 			    (agenda . 5)
 			    (projects . 5)))
     (setq dashboard-banner-logo-title "This is a test"))
+#+end_src
 
+** Org
+#+begin_src emacs-lisp
 (use-package org-tempo
   :ensure nil
   :after org
@@ -63,5 +90,9 @@
                      ("cpp" . "src C++ :includes <iostream>  :namespaces std"))))
     (dolist (template templates)
       (push template org-structure-template-alist))))
+#+end_src
 
+** Git
+#+begin_src emacs-lisp
 (use-package magit)
+#+end_src

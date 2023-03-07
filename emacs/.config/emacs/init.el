@@ -19,9 +19,15 @@
 (setq use-dialog-box nil)
 (fringe-mode -1)
 
-(setq inhibit-startup-screen t)
+; (setq inhibit-startup-screen t)
+
+; Add icons
+(use-package all-the-icons)
 
 (setq custom-file (expand-file-name "custom.el" user-emacs-directory))
+
+(global-set-key (kbd "C-=") 'text-scale-increase)
+(global-set-key (kbd "C--") 'text-scale-decrease)
 
 (use-package evil
   :demand t
@@ -31,7 +37,7 @@
   ;; (setq evil-search-module 'evil-search)
   (setq evil-want-keybinding nil)
   ;; no vim insert bindings
-  (setq evil-undo-system 'undo-fu)
+  (setq evil-undo-system 'undo-redo)
   :config
   (evil-mode 1))
 
@@ -41,6 +47,20 @@
   :config
   (setq evil-want-integration t)
   (evil-collection-init))
+
+;; Enable Commentary
+(use-package evil-commentary
+  :ensure t
+  :after evil
+  :bind (:map evil-normal-state-map
+              ("gc" . evil-commentary)))
+
+;; Enable Surround
+(use-package evil-surround
+  :ensure t
+  :after evil
+  :config
+  (global-evil-surround-mode 1))
 
 (use-package dashboard
   :ensure t
@@ -64,4 +84,13 @@
     (dolist (template templates)
       (push template org-structure-template-alist))))
 
+(setq org-src-preserve-indentation t)
+  
+; tangle on save in orgmode
+(use-package org-auto-tangle
+  :defer t
+  :hook (org-mode . org-auto-tangle-mode))
+
 (use-package magit)
+
+(use-package vterm)

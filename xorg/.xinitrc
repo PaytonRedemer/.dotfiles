@@ -11,6 +11,7 @@ blueman-applet &
 udiskie &
 dunst &
 picom &
+emacs --daemon --eval '(load-file "~/.config/emacs/init.el")' &
 
 # wm
-exec dbus-launch qtile start
+exec dbus-launch i3

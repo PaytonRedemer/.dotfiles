@@ -13,14 +13,6 @@
   :config
   (load-theme `doom-one t))
 
-(menu-bar-mode -1) 
-(scroll-bar-mode -1) 
-(tool-bar-mode -1)
-(setq use-dialog-box nil)
-(fringe-mode -1)
-
-; (setq inhibit-startup-screen t)
-
 ; Add icons
 (use-package all-the-icons)
 

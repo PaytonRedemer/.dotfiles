@@ -30,6 +30,7 @@ bar {
 
 # --- Keybindings --- #
 bindsym $mod+Return exec --no-startup-id $TERMINAL
+bindsym $mod+e exec --no-startup-id "emacsclient -c -a emacs"
 bindsym $mod+w exec --no-startup-id $BROWSER
 bindsym $mod+p exec --no-startup-id "rofi -combi-modi drun,window,ssh -show combi"
 bindsym $mod+Shift+p exec --no-startup-id "rofi-rbw"

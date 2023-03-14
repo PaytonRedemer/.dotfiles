@@ -60,6 +60,12 @@ function M.config()
   -- cmp_mappings['<Tab>'] = nil
   -- cmp_mappings['<S-Tab>'] = nil
 
+  cmp_mappings['<Tab>'] = cmp.mapping.confirm({ select = true })
+
+  -- Leave my enter key alone!
+  cmp_mappings['<CR>'] = nil
+
+
   lsp.setup_nvim_cmp({
     mapping = cmp_mappings
   })

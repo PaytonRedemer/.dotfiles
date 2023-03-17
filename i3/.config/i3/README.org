@@ -1,0 +1,341 @@
+#+TITLE: i3 config
+#+AUTHOR: Payton Redemer
+#+STARTUP: showeverything
+
+* Table of Contents :toc:
+- [[#variables][Variables]]
+- [[#settings][Settings]]
+- [[#window-rules][Window Rules]]
+- [[#startup][Startup]]
+- [[#bar][Bar]]
+  - [[#add-i3block-config-and-scripts-here][Add i3block config and scripts here]]
+- [[#keybindings][Keybindings]]
+  - [[#opening-programs][Opening programs]]
+  - [[#system-controls][System controls]]
+  - [[#i3-controls][i3 controls]]
+
+* Variables
+My mod is key is bound to the super key, also called the Windows key. Gaps values are set here so they can set and also use the same value for toggle keybindings.
+
+#+begin_src conf
+# --- Variables --- #
+set $mod Mod4
+set $inner_gaps 12
+set $outer_gaps 0
+#+end_src
+
+* Settings
+This is where I set my default font and gaps values. The last line allows me to move floating windows when I hold the mod key.
+
+#+begin_src conf
+# --- Appearance --- #
+font pango:monospace 11
+gaps inner $inner_gaps
+gaps outer $outer_gaps
+
+# --- Settings --- #
+floating_modifier $mod
+#+end_src
+
+* Window Rules
+Defining what i3 should do to specific windows. Currently all I do is set border size for all windows.
+
+#+begin_src conf
+# --- Window Rules --- #
+for_window [class="^.*"] border pixel 3
+#+end_src
+
+* Startup
+What programs should startup when I launch i3. Currently there are none because I launch everything in my xinitrc.
+
+#+begin_src conf
+# --- Startup --- #
+#+end_src
+
+* Bar
+Status bar for i3 that uses i3blocks.
+
+#+begin_src conf
+# --- Bar --- #
+bar {
+    font pango:FiraCode Nerd Font Mono 11
+    status_command i3blocks
+    position top
+    mode dock
+    # modifier None
+    tray_output primary
+}
+#+end_src
+
+** TODO Add i3block config and scripts here
+
+* Keybindings
+Keybindings for i3
+
+** Opening programs
+| Keybinding      | Program                                             |
+|-----------------+-----------------------------------------------------|
+| mod + Return    | terminal                                            |
+| mod + e         | Emacs                                               |
+| mod + w         | Web browser                                         |
+| mod + p         | rofi to launch applications that are bound to a key |
+| mod + Shift + p | password manager for Bitwarden                      |
+| mod + n         | Screenshoot utility flameshot                       |
+
+#+begin_src conf
+# --- Keybindings --- #
+bindsym $mod+Return exec --no-startup-id $TERMINAL
+bindsym $mod+e exec --no-startup-id "emacsclient -c -a emacs"
+bindsym $mod+w exec --no-startup-id $BROWSER
+bindsym $mod+p exec --no-startup-id "rofi -combi-modi drun,window,ssh -show combi"
+bindsym $mod+Shift+p exec --no-startup-id "rofi-rbw"
+
+bindsym $mod+n exec --no-startup-id "flameshot gui"
+#+end_src
+
+** System controls
+*** Volume and Brightness
+Rely on my own volume and brightness scripts to work. XF86 keys are your standard specialty keys on a full sized keyboard.
+
+| Keybinding            | Action              |
+|-----------------------+---------------------|
+| mod + minus           | Lower volume        |
+| mod + plus            | Raise volume        |
+| XF86AudioLowerVolume  | Lower volume        |
+| XF86AudioRaiseVolume  | Raise volume        |
+| XF86AudioMute         | Toggle volume mute  |
+| XF86AudioMicMute      | Toggle mic          |
+| XF86MonBrightnessDown | Decrease brightness |
+| XF86MonBrightnessUp   | Increase brightness |
+
+#+begin_src conf
+bindsym $mod+plus exec --no-startup-id "volume-ctl up"
+bindsym $mod+minus exec --no-startup-id "volume-ctl down"
+
+bindsym XF86AudioLowerVolume exec --no-startup-id "volume-ctl down"
+bindsym XF86AudioRaiseVolume exec --no-startup-id "volume-ctl up"
+bindsym XF86AudioMute exec --no-startup-id "volume-ctl mute"
+bindsym XF86AudioMicMute exec --no-startup-id "volume-ctl mute-input"
+
+
+bindsym XF86MonBrightnessDown exec --no-startup-id "brightness-ctl down"
+bindsym XF86MonBrightnessUp exec --no-startup-id "brightness-ctl up"
+#+end_src
+
+*** Audio control
+Control audio with keyboard. Requires ~playctl~.
+
+| Keybinding             | Action                          |
+|------------------------+---------------------------------|
+| mod + control + comma  | Previous track                  |
+| mod + control + p      | Play-pause toggle current audio |
+| mod + control + period | Next track                      |
+
+#+begin_src conf
+bindsym $mod+control+comma exec --no-startup-id "playerctl previous"
+bindsym $mod+control+p exec --no-startup-id "playerctl play-pause"
+bindsym $mod+control+period exec --no-startup-id "playerctl next"
+#+end_src
+
+** i3 controls
+*** Window manipulation keybindings
+| Keybinding      | Action                                     |
+|-----------------+--------------------------------------------|
+| mod + Shift + r | Make currently focused window a scratchpad |
+| mod + r         | Toggle all scratchpads                     |
+| mod + s         | Toggle making a window sticky              |
+| mod + q         | Kill currently focused window              |
+| mod + f         | Make currently focused window fullscreen   |
+
+#+begin_src conf
+bindsym $mod+Shift+r move scratchpad
+bindsym $mod+r scratchpad show
+bindsym $mod+s sticky toggle
+
+bindsym $mod+q kill
+bindsym $mod+f fullscreen toggle
+#+end_src
+
+*** Layout keybindings
+| Keybinding      | Action                                                      |
+|-----------------+-------------------------------------------------------------|
+| mod + t         | Toggle between splitting windows vertically or horizontally |
+| mod + v         | Split windows vertically                                    |
+| mod + z         | Split windows horizontally                                  |
+| mod + Shift + d | Change layout to default                                    |
+| mod + Shift + s | Change layout to stacking                                   |
+| mod + Shift + t | Change layout to tabbed                                     |
+| mod + space     | Toggle between tiled and floating window                    |
+| mod + a         | Focus parent container                                      |
+| mod + c         | Focus child container                                       |
+| mod + b         | Toggle bar appearance                                       |
+
+#+begin_src conf
+# layouts
+bindsym $mod+t split toggle
+bindsym $mod+v split vertical
+bindsym $mod+z split horizontal
+bindsym $mod+Shift+d layout default
+bindsym $mod+Shift+s layout stacking
+bindsym $mod+Shift+t layout tabbed
+
+# toggle tiling / floating
+bindsym $mod+space floating toggle
+
+bindsym $mod+a focus parent
+bindsym $mod+c focus child
+
+# toggle bar
+bindsym $mod+b bar mode toggle
+#+end_src
+
+*** Reload and kill i3
+| Keybinding      | Action              |
+|-----------------+---------------------|
+| mod + Shift + w | Restart i3 in-place |
+| mod + BackSpace | Kill i3             |
+
+#+begin_src conf
+bindsym $mod+Shift+w restart
+bindsym $mod+Shift+BackSpace exit
+#+end_src
+
+*** Gaps
+| Keybinding          | Action                       |
+|---------------------+------------------------------|
+| mod + g             | Toggle gaps                  |
+| mod + Shift + g     | Reset gaps to default values |
+| mod + Shift + plus  | Decrease inner gaps          |
+| mod + Shift + minus | Increase inner gaps          |
+
+#+begin_src conf
+# gaps
+bindsym $mod+g gaps inner current toggle $inner_gaps; gaps outer current toggle $outer_gaps
+bindsym $mod+Shift+g gaps inner current set $inner_gaps; gaps outer current set $outer_gaps
+bindsym $mod+Shift+plus	gaps inner current minus 5
+bindsym $mod+Shift+minus gaps inner current plus 5
+#+end_src
+
+*** Resize windows using vim keys. This relys on the script ~i3resize~.
+| Keybinding        | Action                                          |
+|-------------------+-------------------------------------------------|
+| mod + Control + h | Increase size of currently focused to the left  |
+| mod + Control + j | Increase size of currently focused downward     |
+| mod + Control + k | Increase size of currently focused upward       |
+| mod + Control + l | Increase size of currently focused to the right |
+
+#+begin_src conf
+# resize
+bindsym $mod+Control+h exec --no-startup-id i3resize left
+bindsym $mod+Control+j exec --no-startup-id i3resize down
+bindsym $mod+Control+k exec --no-startup-id i3resize up
+bindsym $mod+Control+l exec --no-startup-id i3resize right
+#+end_src
+
+*** Focusing and moving windows
+| Keybinding          | Action                                  |
+|---------------------+-----------------------------------------|
+| mod + h             | Change focus to the window to the left  |
+| mod + j             | Change focus to the window below        |
+| mod + k             | Change focus to the window above        |
+| mod + l             | Change focus to the window to the right |
+| mod + Left          | Change focus to the window to the left  |
+| mod + Down          | Change focus to the window below        |
+| mod + Up            | Change focus to the window above        |
+| mod + Right         | Change focus to the window to the right |
+| mod + Shift + h     | Move window to the left                 |
+| mod + Shift + j     | Move window below                       |
+| mod + Shift + k     | Move window above                       |
+| mod + Shift + l     | Move window to the right                |
+| mod + Shift + Left  | Move window to the left                 |
+| mod + Shift + Down  | Move window below                       |
+| mod + Shift + Up    | Move window above                       |
+| mod + Shift + Right | Move window to the right                |
+
+#+begin_src conf
+# --- Change focus and move window --- #
+
+# change focus
+bindsym $mod+h focus left
+bindsym $mod+j focus down
+bindsym $mod+k focus up
+bindsym $mod+l focus right
+
+bindsym $mod+Left focus left
+bindsym $mod+Down focus down
+bindsym $mod+Up focus up
+bindsym $mod+Right focus right
+
+# move focused window
+bindsym $mod+Shift+h move left
+bindsym $mod+Shift+j move down
+bindsym $mod+Shift+k move up
+bindsym $mod+Shift+l move right
+
+bindsym $mod+Shift+Left move left
+bindsym $mod+Shift+Down move down
+bindsym $mod+Shift+Up move up
+bindsym $mod+Shift+Right move right
+#+end_src
+
+*** Multi monitors
+| Keybinding           | Action                                                                                            |
+|----------------------+---------------------------------------------------------------------------------------------------|
+| mod + comma          | Change focus to the monitor to the left                                                           |
+| mod + period         | Change focus to the monitor to the right                                                          |
+| mod + Shift + comma  | Move window to the monitor to the left                                                            |
+| mod + Shift + period | Move window to the monitor to the right                                                           |
+| mod + Shift + m      | Move window to the next monitor output order (useful for monitors that are positioned vertically) |
+
+#+begin_src conf
+# multi monitor
+bindsym $mod+comma focus output left
+bindsym $mod+period focus output right
+bindsym $mod+Shift+comma move output left
+bindsym $mod+Shift+period move output right
+bindsym $mod+Shift+m move output next
+#+end_src
+
+*** Workspaces
+| Keybinding          | Action                              |
+|---------------------+-------------------------------------|
+| mod + [0-9]         | Switch to a workspace [0-9]         |
+| mod + Shift + [0-9] | Move container to a workspace [0-9] |
+
+#+begin_src conf
+# --- Workspaces --- #
+set $ws1 "1"
+set $ws2 "2"
+set $ws3 "3"
+set $ws4 "4"
+set $ws5 "5"
+set $ws6 "6"
+set $ws7 "7"
+set $ws8 "8"
+set $ws9 "9"
+set $ws10 "10"
+
+# switch to workspace
+bindsym $mod+1 workspace number $ws1
+bindsym $mod+2 workspace number $ws2
+bindsym $mod+3 workspace number $ws3
+bindsym $mod+4 workspace number $ws4
+bindsym $mod+5 workspace number $ws5
+bindsym $mod+6 workspace number $ws6
+bindsym $mod+7 workspace number $ws7
+bindsym $mod+8 workspace number $ws8
+bindsym $mod+9 workspace number $ws9
+bindsym $mod+0 workspace number $ws10
+
+# move focused container to workspace
+bindsym $mod+Shift+1 move container to workspace number $ws1
+bindsym $mod+Shift+2 move container to workspace number $ws2
+bindsym $mod+Shift+3 move container to workspace number $ws3
+bindsym $mod+Shift+4 move container to workspace number $ws4
+bindsym $mod+Shift+5 move container to workspace number $ws5
+bindsym $mod+Shift+6 move container to workspace number $ws6
+bindsym $mod+Shift+7 move container to workspace number $ws7
+bindsym $mod+Shift+8 move container to workspace number $ws8
+bindsym $mod+Shift+9 move container to workspace number $ws9
+bindsym $mod+Shift+0 move container to workspace number $ws10
+#+end_src

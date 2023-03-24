@@ -34,8 +34,7 @@ bindsym $mod+e exec --no-startup-id "emacsclient -c -a emacs"
 bindsym $mod+w exec --no-startup-id $BROWSER
 bindsym $mod+p exec --no-startup-id "rofi -combi-modi drun,window,ssh -show combi"
 bindsym $mod+Shift+p exec --no-startup-id "rofi-rbw"
-
-bindsym $mod+n exec --no-startup-id "flameshot gui"
+bindsym $mod+z exec --no-startup-id "flameshot gui"
 
 bindsym $mod+plus exec --no-startup-id "volume-ctl up"
 bindsym $mod+minus exec --no-startup-id "volume-ctl down"
@@ -65,15 +64,14 @@ bindsym $mod+Shift+BackSpace exit
 # layouts
 bindsym $mod+t split toggle
 bindsym $mod+v split vertical
-bindsym $mod+z split horizontal
+bindsym $mod+Shift+v split horizontal
 bindsym $mod+Shift+d layout default
 bindsym $mod+Shift+s layout stacking
 bindsym $mod+Shift+t layout tabbed
 
 # toggle tiling / floating
-# bindsym $mod+Shift+f floating toggle
-bindsym $mod+space floating toggle
-# bindsym $mod+space focus mode_toggle
+bindsym $mod+space focus mode_toggle
+bindsym $mod+Shift+space floating toggle
 
 bindsym $mod+a focus parent
 bindsym $mod+c focus child

@@ -4,7 +4,7 @@ displays=$(xrandr | grep " connected " | awk '{ print$1 }')
 
 # Triple monitors
 if echo "$displays" | grep -q "HDMI-0"; then
-    xrandr --output DP-3 --auto --pos -1920x0 --output DP-0 --primary --auto --rate 144 --pos 0x0 --output HDMI-0 --auto --pos 1920x0
+    xrandr --output DP-5 --auto --pos -1920x0 --output DP-0 --primary --mode 1920x1080 --rate 144 --pos 0x0 --output HDMI-0 --auto --pos 1920x0
     feh --bg-fill ~/Pictures/Wallpapers/hubble_sharpest_view_of_the_orion_nebula.jpg --no-fehbg
 
 # Sunshine

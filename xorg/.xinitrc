@@ -14,4 +14,4 @@ picom &
 emacs --daemon --eval '(load-file "~/.config/emacs/init.el")' &
 
 # wm
-exec dbus-launch i3
+exec_wm

@@ -7,6 +7,7 @@ dropdowns = [
     DropDown("terminal", "alacritty"),
     DropDown("volume", "alacritty -e pulsemixer"),
     DropDown("calc", "alacritty -e qalc"),
+    DropDown("todo", "alacritty -e todo"),
 ]
 
 scratchpads = ScratchPad("scratchpad", dropdowns)
@@ -14,5 +15,6 @@ scratchpads = ScratchPad("scratchpad", dropdowns)
 scratchpad_keybindings = [
     Key([mod, "shift"], "Return", lazy.group['scratchpad'].dropdown_toggle('terminal')),
     Key([mod], "v", lazy.group['scratchpad'].dropdown_toggle('volume')),
-    Key([mod], "c", lazy.group['scratchpad'].dropdown_toggle('calc'))
+    Key([mod], "c", lazy.group['scratchpad'].dropdown_toggle('calc')),
+    Key([mod], "t", lazy.group['scratchpad'].dropdown_toggle('todo'))
 ]

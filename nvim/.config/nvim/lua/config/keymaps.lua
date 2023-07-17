@@ -1,13 +1,10 @@
 vim.g.mapleader = " "
 
-vim.keymap.set("n", "<leader>pv", vim.cmd.Ex)
-
 -- Move to windows using one less key stroke
 vim.keymap.set("n", "<C-h>", "<C-w>h")
 vim.keymap.set("n", "<C-j>", "<C-w>j")
 vim.keymap.set("n", "<C-k>", "<C-w>k")
 vim.keymap.set("n", "<C-l>", "<C-w>l")
-
 
 vim.keymap.set("i", "jk", "<ESC>")
 vim.keymap.set("i", "kj", "<ESC>")
@@ -30,3 +27,8 @@ local toggle_diagnostics = function()
 end
 
 vim.keymap.set('n', '<leader>d', toggle_diagnostics)
+
+vim.keymap.set("n", "[t", ":tabprevious<CR>")
+vim.keymap.set("n", "]t", ":tabnext<CR>")
+
+vim.keymap.set("n", "L", "$")

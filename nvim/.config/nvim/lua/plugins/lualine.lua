@@ -2,11 +2,12 @@ return {
   "nvim-lualine/lualine.nvim",
 
   dependencies = {
-    "nvim-tree/nvim-web-devicons"
+    "nvim-tree/nvim-web-devicons",
   },
-
-  config = function ()
-    require('lualine').setup()
+  init = function()
     vim.opt.showmode = false
-  end
+    vim.opt.cmdheight = 0
+  end,
+
+  opts = {},
 }

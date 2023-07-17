@@ -22,6 +22,7 @@ return {
     keys = {
       { "<leader>:", "<cmd>Telescope command_history<cr>", desc = "Command History" },
       { "<leader>/", "<cmd>Telescope live_grep<cr>", desc = "Grep" },
+      { "<leader>b", "<cmd>Telescope buffers<cr>", desc = "[B]uffers" },
       -- find
       { "<leader>fb", "<cmd>Telescope buffers<cr>", desc = "[F]ind [B]uffers" },
       { "<leader>ff", "<cmd>Telescope find_files<cr>", desc = "[F]ind [F]iles" },
@@ -46,6 +47,8 @@ return {
       { "<leader>gb", "<cmd>Telescope git_branches<CR>", desc = "[G]it [B]ranches" },
       { "<leader>gc", "<cmd>Telescope git_commits<CR>", desc = "[G]it [C]ommits" },
       { "<leader>gs", "<cmd>Telescope git_status<CR>", desc = "[G]it [S]tatus" },
+      -- ui
+      { "<leader>uc", "<cmd>Telescope colorscheme<CR>", desc = "[U]i [C]olorscheme" },
     },
   },
   {

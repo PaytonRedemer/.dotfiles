@@ -1,4 +1,5 @@
 return {
-  "windwp/nvim-autopairs",
-  config = true
+  "echasnovski/mini.pairs",
+  event = "VeryLazy",
+  opts = {},
 }

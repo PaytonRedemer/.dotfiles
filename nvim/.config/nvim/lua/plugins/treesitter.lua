@@ -1,9 +1,8 @@
 return {
   {
     "nvim-treesitter/nvim-treesitter",
-
     config = function()
-      require'nvim-treesitter.configs'.setup {
+      require("nvim-treesitter.configs").setup({
         -- A list of parser names, or "all"
         ensure_installed = { "vimdoc", "c", "cpp", "python", "bash", "lua", "rust", "r", "javascript", "typescript" },
 
@@ -33,7 +32,7 @@ return {
           -- Instead of true it can also be a list of languages
           additional_vim_regex_highlighting = false,
         },
-      }
+      })
     end,
   },
 }

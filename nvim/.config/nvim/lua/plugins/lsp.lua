@@ -4,57 +4,52 @@ M.dependencies = {
   "williamboman/mason.nvim",
   "williamboman/mason-lspconfig.nvim",
   "hrsh7th/cmp-nvim-lsp",
-  "folke/neodev.nvim"
+  "folke/neodev.nvim",
 }
 
 function M.config()
-  vim.api.nvim_create_autocmd('LspAttach', {
-    desc = 'LSP actions',
-    callback = function(event)
-      local opts = {buffer = bufnr, remap = false}
-      vim.keymap.set("n", "gd", vim.lsp.buf.definition, opts)
-      vim.keymap.set("n", "gD", vim.lsp.buf.declaration, opts)
-      vim.keymap.set("n", "gi", vim.lsp.buf.implementation, opts)
-      vim.keymap.set("n", "gt", vim.lsp.buf.type_definition, opts)
-      vim.keymap.set("n", "gr", vim.lsp.buf.references, opts)
-      vim.keymap.set("n", "K", vim.lsp.buf.hover, opts)
-      vim.keymap.set("n", "gK", vim.lsp.buf.signature_help, opts)
-      vim.keymap.set("n", "gs", vim.lsp.buf.document_symbol, opts)
-      vim.keymap.set("n", "gS", vim.lsp.buf.workspace_symbol, opts)
-      vim.keymap.set("i", "<leader>ch", vim.lsp.buf.signature_help, opts)
-      vim.keymap.set("n", "<leader>ca", vim.lsp.buf.code_action, opts)
-      vim.keymap.set("n", "<leader>cf", vim.lsp.buf.format, opts)
-      vim.keymap.set("n", "<leader>cr", vim.lsp.buf.rename, opts)
-
-      -- add diagnostic symbols somewhere probably
-      vim.keymap.set("n", "<leader>vd", vim.diagnostic.open_float, opts)
-      vim.keymap.set("n", "[d", vim.diagnostic.goto_prev, opts)
-      vim.keymap.set("n", "]d", vim.diagnostic.goto_next, opts)
+  local on_attach = function(_, bufnr)
+    local nmap = function(keys, func, desc)
+      vim.keymap.set("n", keys, func, { buffer = bufnr, desc = desc })
     end
-  })
+
+    nmap("K", vim.lsp.buf.hover, "Hover")
+    nmap("gd", vim.lsp.buf.definition, "[G]oto [D]efinition")
+    nmap("gD", vim.lsp.buf.declaration, "[G]oto [D]eclaration")
+    nmap("gi", vim.lsp.buf.implementation, "[G]oto [I]mplementation")
+    nmap("gt", vim.lsp.buf.type_definition, "[G]oto [T]ype definition")
+    nmap("gr", vim.lsp.buf.references, "[G]oto [R]eferences")
+    nmap("gs", vim.lsp.buf.document_symbol, "[G]oto document [S]ymbol")
+    nmap("gS", vim.lsp.buf.workspace_symbol, "[G]oto workspace [S]ymbol")
+    nmap("<leader>ch", vim.lsp.buf.signature_help, "[C]ode signature [H]elp")
+    nmap("<leader>ca", vim.lsp.buf.code_action, "[C]ode [A]ction")
+    nmap("<leader>cf", vim.lsp.buf.format, "[C]ode [F]ormat")
+    nmap("<leader>cr", vim.lsp.buf.rename, "[C]ode [R]ename")
+  end
 
   require("neodev").setup()
-  require('mason').setup()
-  require('mason-lspconfig').setup({
+  require("mason").setup()
+  require("mason-lspconfig").setup({
     ensure_installed = {
-      'clangd',
-      'pyright',
-      'bashls',
-      'tsserver',
-      'eslint',
-      'lua_ls',
-      'rust_analyzer',
-      'ltex'
-    }
+      "clangd",
+      "pyright",
+      "bashls",
+      "tsserver",
+      "eslint",
+      "lua_ls",
+      "rust_analyzer",
+      "ltex",
+    },
   })
 
-  local lspconfig = require('lspconfig')
-  local lsp_capabilities = require('cmp_nvim_lsp').default_capabilities()
+  local capabilities = vim.lsp.protocol.make_client_capabilities()
+  capabilities = require("cmp_nvim_lsp").default_capabilities(capabilities)
 
-  require('mason-lspconfig').setup_handlers({
+  require("mason-lspconfig").setup_handlers({
     function(server_name)
-      lspconfig[server_name].setup({
-        capabilities = lsp_capabilities,
+      require("lspconfig")[server_name].setup({
+        on_attach = on_attach,
+        capabilities = capabilities,
       })
     end,
   })

@@ -1,7 +1,5 @@
 return {
-  "echasnovski/mini.comment",
-
-  config = function()
-    require('mini.comment').setup()
-  end
+  "numToStr/Comment.nvim",
+  event = "VeryLazy",
+  opts = {},
 }

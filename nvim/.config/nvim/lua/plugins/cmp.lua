@@ -16,31 +16,31 @@ M.dependencies = {
 M.event = "InsertEnter"
 
 function M.config()
-  vim.opt.completeopt = {"menu", "menuone", "noselect"}
+  vim.opt.completeopt = { "menu", "menuone", "noselect" }
 
   local cmp = require("cmp")
-  local cmp_select = {behavior = cmp.SelectBehavior.Select}
+  local cmp_select = { behavior = cmp.SelectBehavior.Select }
 
-  require('luasnip.loaders.from_vscode').lazy_load()
+  require("luasnip.loaders.from_vscode").lazy_load()
 
   cmp.setup({
     snippet = {
       expand = function(args)
         require("luasnip").lsp_expand(args.body)
-      end
+      end,
     },
     sources = {
-      {name = "nvim_lsp", keyword_length = 2},
-      {name = "luasnip", keyword_length = 2},
-      {name = "buffer", keyword_length = 3},
-      {name = "path"},
+      { name = "nvim_lsp", keyword_length = 2 },
+      { name = "luasnip", keyword_length = 2 },
+      { name = "buffer", keyword_length = 3 },
+      { name = "path" },
     },
     window = {
       completion = cmp.config.window.bordered(),
       documentation = cmp.config.window.bordered(),
     },
     formatting = {
-      fields = {"abbr", "kind", "menu"},
+      fields = { "abbr", "kind", "menu" },
       format = function(entry, item)
         local menu_icon = {
           nvim_lsp = "LSP",
@@ -60,9 +60,9 @@ function M.config()
       ["<C-n>"] = cmp.mapping.select_next_item(cmp_select),
 
       ["<C-e>"] = cmp.mapping.abort(),
-      ["<C-y>"] = cmp.mapping.confirm({select = true}),
-      ["<Tab>"] = cmp.mapping.confirm({select = true}),
-      ["<C-Space>"] = cmp.mapping.confirm({select = true}),
+      ["<C-y>"] = cmp.mapping.confirm({ select = true }),
+      ["<Tab>"] = cmp.mapping.confirm({ select = true }),
+      ["<C-Space>"] = cmp.mapping.confirm({ select = true }),
 
       ["<C-u>"] = cmp.mapping.scroll_docs(-4),
       ["<C-d>"] = cmp.mapping.scroll_docs(4),

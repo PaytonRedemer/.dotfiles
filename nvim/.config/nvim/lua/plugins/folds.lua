@@ -16,8 +16,9 @@ return {
 
   {
     "kevinhwang91/nvim-ufo",
-    dependencies = { "kevinhwang91/promise-async" },
-    config = function()
+    dependencies = "kevinhwang91/promise-async",
+    event = { "BufReadPost", "BufNewFile" },
+    opts = function()
       vim.o.foldcolumn = "0" -- Disables fold column
       vim.o.foldlevel = 99 -- Using ufo provider need a large value, feel free to decrease the value
       vim.o.foldlevelstart = 99
@@ -26,7 +27,8 @@ return {
       -- Using ufo provider need remap `zR` and `zM`
       vim.keymap.set("n", "zR", require("ufo").openAllFolds)
       vim.keymap.set("n", "zM", require("ufo").closeAllFolds)
-      require("ufo").setup()
+
+      return {}
     end,
   },
 }

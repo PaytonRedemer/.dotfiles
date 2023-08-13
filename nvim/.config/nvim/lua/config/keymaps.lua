@@ -6,29 +6,15 @@ vim.keymap.set("n", "<C-j>", "<C-w>j")
 vim.keymap.set("n", "<C-k>", "<C-w>k")
 vim.keymap.set("n", "<C-l>", "<C-w>l")
 
-vim.keymap.set("i", "jk", "<ESC>")
-vim.keymap.set("i", "kj", "<ESC>")
-
--- Move block of text up and down
-vim.keymap.set("x", "J", ":move '>+1<CR>gv-gv")
-vim.keymap.set("x", "K", ":move '<-2<CR>gv-gv")
-vim.keymap.set("x", "<A-j>", ":move '>+1<CR>gv-gv")
-vim.keymap.set("x", "<A-k>", ":move '<-2<CR>gv-gv")
-
--- toggle diagnostics
-local diagnostics_active = true
-local toggle_diagnostics = function()
-  diagnostics_active = not diagnostics_active
-  if diagnostics_active then
-    vim.diagnostic.show()
-  else
-    vim.diagnostic.hide()
-  end
-end
-
-vim.keymap.set('n', '<leader>d', toggle_diagnostics)
-
-vim.keymap.set("n", "[t", ":tabprevious<CR>")
-vim.keymap.set("n", "]t", ":tabnext<CR>")
-
 vim.keymap.set("n", "L", "$")
+
+-- centered actions
+vim.keymap.set("n", "<C-d>", "<C-d>zz")
+vim.keymap.set("n", "<C-u>", "<C-u>zz")
+vim.keymap.set("n", "n", "nzzzv")
+vim.keymap.set("n", "N", "Nzzzv")
+
+-- yanking and deleting
+vim.keymap.set({ "n", "v" }, "<leader>y", [["+y]])
+vim.keymap.set("n", "<leader>Y", [["+Y]])
+vim.keymap.set({ "n", "v" }, "<leader>d", [["_d]])

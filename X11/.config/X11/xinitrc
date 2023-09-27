@@ -1,7 +1,12 @@
-[[ -f ~/.Xresources ]] && xrdb -merge -I$HOME ~/.Xresources
+#!/bin/sh
 
+# X11
 xsetroot -cursor_name left_ptr
 monitorSetup.sh
+
+if [ -f "$XDG_CONFIG_HOME/X11/Xresources" ]; then
+    xrdb -load "$XDG_CONFIG_HOME"/X11/Xresources
+fi
 
 # sys-tray
 nm-applet &
@@ -11,7 +16,6 @@ blueman-applet &
 udiskie &
 dunst &
 picom &
-emacs --daemon --eval '(load-file "~/.config/emacs/init.el")' &
 
 # wm
 exec_wm

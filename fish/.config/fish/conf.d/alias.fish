@@ -1,0 +1,8 @@
+alias ls "ls -hN --color=auto --group-directories-first"
+alias grep "grep --color=auto"
+alias cp "cp -iv"
+alias mv "mv -iv"
+alias rm "rm -Iv"
+alias diff "diff --color=auto"
+alias ":q" "exit"
+alias ":wq" "exit"

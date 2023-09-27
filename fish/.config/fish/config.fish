@@ -14,4 +14,6 @@ set -Ux XDG_CONFIG_HOME "$HOME/.config"
 set -Ux XDG_DATA_HOME "$HOME/.local/share"
 set -Ux XDG_CACHE_HOME "$HOME/.cache"
 
+set -Ux XINITRC "$XDG_CONFIG_HOME/X11/xinitrc"
+
 fish_add_path $HOME/.local/bin/

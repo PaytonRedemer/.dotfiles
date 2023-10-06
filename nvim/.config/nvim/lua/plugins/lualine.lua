@@ -3,7 +3,7 @@ return {
   dependencies = {
     "nvim-tree/nvim-web-devicons",
   },
-  event = { "BufReadPre", "BufNewFile" },
+  -- event = { "BufReadPre", "BufNewFile" },
   init = function()
     vim.opt.showmode = false
     vim.opt.cmdheight = 1

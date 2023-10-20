@@ -1,0 +1,4 @@
+include "$XDG_CONFIG_HOME"/i3/config
+
+# sway specific configuration
+exec swaymsg output "*" bg ~/Pictures/Wallpapers/orion_nebula.jpg fill

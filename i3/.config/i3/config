@@ -14,7 +14,7 @@ gaps outer $outer_gaps
 floating_modifier $mod
 
 # --- Window Rules --- #
-for_window [class="^.*"] border pixel 3
+for_window [class="^.*"] border pixel 2
 
 # --- Startup --- #
 
@@ -24,33 +24,30 @@ bar {
     status_command i3blocks
     position top
     mode dock
-    # modifier None
+    modifier none
     tray_output primary
 }
 
 # --- Keybindings --- #
 bindsym $mod+Return exec --no-startup-id $TERMINAL
-bindsym $mod+e exec --no-startup-id "emacsclient -c -a emacs"
 bindsym $mod+w exec --no-startup-id $BROWSER
 bindsym $mod+p exec --no-startup-id "rofi -combi-modi drun,window,ssh -show combi"
 bindsym $mod+Shift+p exec --no-startup-id "rofi-rbw"
 bindsym $mod+z exec --no-startup-id "flameshot gui"
 
-bindsym $mod+plus exec --no-startup-id "volume-ctl up"
+bindsym $mod+equal exec --no-startup-id "volume-ctl up"
 bindsym $mod+minus exec --no-startup-id "volume-ctl down"
 
-bindsym XF86AudioLowerVolume exec --no-startup-id "volume-ctl down"
 bindsym XF86AudioRaiseVolume exec --no-startup-id "volume-ctl up"
+bindsym XF86AudioLowerVolume exec --no-startup-id "volume-ctl down"
 bindsym XF86AudioMute exec --no-startup-id "volume-ctl mute"
 bindsym XF86AudioMicMute exec --no-startup-id "volume-ctl mute-input"
-
 
 bindsym XF86MonBrightnessDown exec --no-startup-id "brightness-ctl down"
 bindsym XF86MonBrightnessUp exec --no-startup-id "brightness-ctl up"
 
-
-bindsym $mod+control+comma exec --no-startup-id "playerctl previous"
 bindsym $mod+control+p exec --no-startup-id "playerctl play-pause"
+bindsym $mod+control+comma exec --no-startup-id "playerctl previous"
 bindsym $mod+control+period exec --no-startup-id "playerctl next"
 
 bindsym $mod+Shift+r move scratchpad
@@ -77,7 +74,7 @@ bindsym $mod+a focus parent
 bindsym $mod+c focus child
 
 # reload the configuration file
-bindsym $mod+Shift+w restart
+bindsym $mod+Control+r reload
 bindsym $mod+b bar mode toggle
 
 # gaps

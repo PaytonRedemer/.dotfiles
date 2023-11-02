@@ -16,7 +16,6 @@ blueman-applet &
 udiskie &
 dunst &
 picom &
-xscreensaver --no-splash &
 
 # wm
 exec_wm

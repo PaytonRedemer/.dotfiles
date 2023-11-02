@@ -2,11 +2,12 @@
 
 bat=$(acpi -b)
 status=$(echo "$bat" | awk '{print $3}' | tr -d ',')
+percentage=$(echo "$bat" | awk '{print $4}' | tr -d ',')
 
 if [ "$status" = "Full" ] || [ -z "$status" ]; then
     exit
+elif [ "$status" = "Charging" ]; then
+    echo "  CHR: $percentage  "
+else
+    echo "  BAT: $percentage  "
 fi
-
-percentage=$(echo "$bat" | awk '{print $4}' | tr -d ',')
-
-echo "  BAT: $percentage  "

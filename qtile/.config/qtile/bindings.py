@@ -85,6 +85,7 @@ keys = [
     Key([mod], "f", lazy.window.toggle_fullscreen(), desc="Put the focused window to/from fullscreen mode"),
     Key([mod, "shift"], "space", lazy.window.toggle_floating(), desc='Toggle floating'),
     Key([mod], "b", lazy.hide_show_bar(), desc="Toggle bar"),
+    Key([mod, "shift"], "backspace", lazy.shutdown(), desc="Kill qtile"),
     Key([mod], "escape", lazy.spawn("xscreensaver-command -lock")),
 ]
 

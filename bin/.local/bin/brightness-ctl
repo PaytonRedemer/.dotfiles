@@ -3,11 +3,13 @@
 
 case $1 in
     up)
-        xbacklight -inc 5
-        dunstify -u low -t 3000 -r 90210 " $(printf %.0f%% $(xbacklight -get))";
+        brightnessctl set +5%
         ;;
     down)
-        xbacklight -dec 5
-        dunstify -u low -t 3000 -r 90210 " $(printf %.0f%% $(xbacklight -get))";
+        brightnessctl set 5%-
         ;;
 esac
+
+brightness=$(awk "BEGIN {print $(brightnessctl get) / $(brightnessctl max) * 100}")
+
+notify-send -t 1000 -r 100 "   Brightness" "$brightness%"

@@ -1,11 +1,12 @@
 from libqtile import layout
 from libqtile.config import Match
+from colors import colors
 
 layout_theme = {
     "border_width": 1,
     "margin": 12,
-    "border_focus": "FFFFFF",
-    "border_normal": "1D2330"
+    "border_focus": colors["foreground"],
+    "border_normal": colors["background"]
 }
 
 layouts = [

@@ -6,7 +6,7 @@ widget_defaults = dict(
     font="FiraCode Nerd Font Mono",
     fontsize=15,
     padding=5,
-    foreground=colors["foreground"],
+    foreground="#FFFFFF",
 )
 extension_defaults = widget_defaults.copy()
 
@@ -20,8 +20,8 @@ def init_widgets():
             highlight_method="block",
             rounded=True,
             hide_unused=True,
-            active = colors["foreground"],
-            inactive = colors["foreground"],
+            active = "#FFFFFF",
+            inactive = "#FFFFFF",
             ),
         widget.Spacer(),
         widget.PulseVolume(

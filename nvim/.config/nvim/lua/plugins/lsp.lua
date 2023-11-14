@@ -40,6 +40,7 @@ return {
         "lua_ls",
         "rust_analyzer",
         "ltex",
+        "r_language_server",
       },
     })
 

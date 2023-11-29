@@ -8,8 +8,8 @@ return {
       end
 
       local gs = package.loaded.gitsigns
-      map("n", "[g", gs.prev_hunk, "Previous hunk")
-      map("n", "]g", gs.next_hunk, "Next hunk")
+      map("n", "[h", gs.prev_hunk, "Previous hunk")
+      map("n", "]h", gs.next_hunk, "Next hunk")
       map("n", "<leader>ghs", gs.stage_hunk, "[G]it [H]unk [S]tage")
       map("n", "<leader>ghr", gs.reset_hunk, "[G]it [H]unk [R]eset")
       map("v", "<leader>ghs", function() gs.stage_hunk({ vim.fn.line("."), vim.fn.line("v") }) end, "[G]it [H]unk [S]tage")

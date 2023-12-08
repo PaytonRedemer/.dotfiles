@@ -22,3 +22,7 @@ vim.keymap.set({ "n", "v" }, "<leader>d", [["_d]])
 -- tab navigation
 vim.keymap.set("n", "<Tab>", ":tabnext<cr>")
 vim.keymap.set("n", "<S-Tab>", ":tabprevious<cr>")
+
+-- better macros
+vim.keymap.set("n", "Q", "@q")
+vim.keymap.set("x", "Q", ":norm @q<CR>")

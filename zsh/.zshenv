@@ -5,7 +5,7 @@ export PATH
 
 # default programs
 export EDITOR="nvim"
-export TERMINAL="alacritty"
+export TERMINAL="wezterm"
 export BROWSER="firefox"
 
 # xdg

@@ -7,7 +7,7 @@ zoxide init fish | source
 set -Ux EDITOR nvim
 set -Ux VISUAL nvim
 set -Ux BROWSER firefox
-set -Ux TERMINAL alacritty
+set -Ux TERMINAL wezterm
 
 # xdg
 set -Ux XDG_CONFIG_HOME "$HOME/.config"

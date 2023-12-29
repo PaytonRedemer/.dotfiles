@@ -1,0 +1,19 @@
+[user]
+    name = Payton Redemer
+    email = paytonredemer@gmail.com
+
+[core]
+    autocrlf = input
+
+[alias]
+    c = commit
+    co = checkout
+    st = status
+    br = branch
+    hist = log --pretty=format:'%h %ad | %s%d [%an]' --graph --date=short
+
+[push]
+    default = simple
+
+[branch]
+    autosetuprebase = always

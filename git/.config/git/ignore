@@ -1,0 +1,52 @@
+# IDE files
+.idea/
+.vscode/
+
+# Dependency directories
+node_modules/
+bower_components/
+jspm_packages/
+packages/
+*.egg-info/
+dist/
+build/
+venv/
+env/
+__pycache__/
+.cache/
+.pytest_cache/
+
+# Compiled files
+*.pyc
+*.pyo
+*.pyd
+
+# Package files
+*.jar
+*.war
+*.ear
+
+# Logs and databases
+*.log
+*.sql
+*.sqlite
+*.db
+
+# Temporary files
+*.swp
+*~
+*#
+*.bak
+*.tmp
+
+# Jupyter Notebooks
+.ipynb_checkpoints/
+
+# macOS directories
+.DS_Store
+.AppleDouble/
+.LSOverride
+
+# Windows directories
+Desktop.ini
+Thumbs.db

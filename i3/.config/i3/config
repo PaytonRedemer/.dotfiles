@@ -62,7 +62,7 @@ bindsym $mod+Shift+BackSpace exit
 # layouts
 bindsym $mod+t split toggle
 bindsym $mod+v split vertical
-bindsym $mod+Shift+v split horizontal
+bindsym $mod+x split horizontal
 bindsym $mod+Shift+d layout default
 bindsym $mod+Shift+s layout stacking
 bindsym $mod+Shift+t layout tabbed

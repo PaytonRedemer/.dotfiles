@@ -26,7 +26,16 @@ return {
   },
   keys = {
     { "<leader>:",  "<cmd>Telescope command_history<cr>",           desc = "Command History" },
-    { "<leader>/",  "<cmd>Telescope live_grep<cr>",                 desc = "Grep" },
+    {
+      "<leader>/",
+      function()
+        require("telescope.builtin").current_buffer_fuzzy_find(require("telescope.themes").get_dropdown({
+          winblend = 10,
+          previewer = true,
+        }))
+      end,
+      desc = "[/] Fuzzily search in current buffer",
+    },
     { "<leader>b",  "<cmd>Telescope buffers<cr>",                   desc = "[B]uffers" },
     { "<C-p>",      "<cmd>Telescope git_files<cr>",                 desc = "[P]roject files" },
     -- find
@@ -47,13 +56,31 @@ return {
     { "<leader>sk", "<cmd>Telescope keymaps<cr>",                   desc = "[S]earch [K]eymaps" },
     { "<leader>sm", "<cmd>Telescope marks<cr>",                     desc = "[S]earch [M]arks" },
     { "<leader>sM", "<cmd>Telescope man_pages<cr>",                 desc = "[S]earch [M]an pages" },
-    { "<leader>so", "<cmd>Telescope vim_options<cr>",               desc = "[S]earch [O]ptions" },
-    { "<leader>ss", "<cmd>Telescope lsp_document_symbols<cr>",      desc = "[S]earch document [S]ymbols" },
+    {
+      "<leader>sn",
+      function()
+        require("telescope.builtin").find_files({ cwd = vim.fn.stdpath("config") })
+      end,
+      desc = "[S]earch [N]eovim files",
+    },
+    { "<leader>so", "<cmd>Telescope vim_options<cr>",          desc = "[S]earch [O]ptions" },
+    { "<leader>sr", "<cmd>Telescope resume<cr>",               desc = "[S]earch [R]esume" },
+    { "<leader>ss", "<cmd>Telescope lsp_document_symbols<cr>", desc = "[S]earch document [S]ymbols" },
+    {
+      "<leader>s/",
+      function()
+        require("telescope.builtin").live_grep({
+          grep_open_files = true,
+          prompt_title = "Live Grep in Open Files",
+        })
+      end,
+      desc = "[S]earch [/] in Open Files",
+    },
     -- git
-    { "<leader>gb", "<cmd>Telescope git_branches<CR>",              desc = "[G]it [B]ranches" },
-    { "<leader>gc", "<cmd>Telescope git_commits<CR>",               desc = "[G]it [C]ommits" },
-    { "<leader>gs", "<cmd>Telescope git_status<CR>",                desc = "[G]it [S]tatus" },
+    { "<leader>gb", "<cmd>Telescope git_branches<CR>", desc = "[G]it [B]ranches" },
+    { "<leader>gc", "<cmd>Telescope git_commits<CR>",  desc = "[G]it [C]ommits" },
+    { "<leader>gs", "<cmd>Telescope git_status<CR>",   desc = "[G]it [S]tatus" },
     -- ui
-    { "<leader>uc", "<cmd>Telescope colorscheme<CR>",               desc = "[U]i [C]olorscheme" },
+    { "<leader>uc", "<cmd>Telescope colorscheme<CR>",  desc = "[U]i [C]olorscheme" },
   },
 }

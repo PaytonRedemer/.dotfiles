@@ -1,10 +1,10 @@
 return {
   "neovim/nvim-lspconfig",
   dependencies = {
-    "williamboman/mason.nvim",
+    { "folke/neodev.nvim", opts = {} },
+    { "williamboman/mason.nvim", opts = {} },
     "williamboman/mason-lspconfig.nvim",
     "hrsh7th/cmp-nvim-lsp",
-    "folke/neodev.nvim",
   },
   cmd = "LspInfo",
   event = { "BufReadPre", "BufNewFile" },
@@ -28,19 +28,17 @@ return {
       nmap("<leader>cr", vim.lsp.buf.rename, "[C]ode [R]ename")
     end
 
-    require("neodev").setup()
-    require("mason").setup()
     require("mason-lspconfig").setup({
       ensure_installed = {
-        "clangd",
-        "pyright",
         "bashls",
-        "tsserver",
+        "clangd",
         "eslint",
-        "lua_ls",
-        "rust_analyzer",
         "ltex",
-        "r_language_server",
+        "lua_ls",
+        "nil_ls",
+        "pyright",
+        "rust_analyzer",
+        "tsserver",
       },
     })
 

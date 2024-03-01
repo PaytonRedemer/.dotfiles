@@ -6,4 +6,7 @@ return {
   },
   cmd = "Neogit",
   opts = {},
+  keys = {
+    { "<leader>gg", "<cmd>Neogit<cr>", desc = "Neogit" },
+  },
 }

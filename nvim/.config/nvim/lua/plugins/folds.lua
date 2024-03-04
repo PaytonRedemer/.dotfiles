@@ -1,22 +1,23 @@
 return {
   -- add folding range to capabilities
-  {
-    "neovim/nvim-lspconfig",
-    opts = {
-      capabilities = {
-        textDocument = {
-          foldingRange = {
-            dynamicRegistration = false,
-            lineFoldingOnly = true,
-          },
-        },
-      },
-    },
-  },
+  -- {
+  --   "neovim/nvim-lspconfig",
+  --   opts = {
+  --     capabilities = {
+  --       textDocument = {
+  --         foldingRange = {
+  --           dynamicRegistration = false,
+  --           lineFoldingOnly = true,
+  --         },
+  --       },
+  --     },
+  --   },
+  -- },
 
   {
     "kevinhwang91/nvim-ufo",
     dependencies = "kevinhwang91/promise-async",
+    enabled = false,
     event = { "BufReadPost", "BufNewFile" },
     opts = function()
       vim.o.foldcolumn = "0" -- Disables fold column

@@ -1,4 +1,5 @@
 vim.g.mapleader = " "
+vim.g.maplocalleader = ","
 
 -- move to windows using one less key stroke
 vim.keymap.set("n", "<C-h>", "<C-w>h")

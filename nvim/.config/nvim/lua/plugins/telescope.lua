@@ -67,6 +67,15 @@ return {
     { "<leader>sr", "<cmd>Telescope resume<cr>",               desc = "[S]earch [R]esume" },
     { "<leader>ss", "<cmd>Telescope lsp_document_symbols<cr>", desc = "[S]earch document [S]ymbols" },
     {
+      "<leader>sw",
+      function()
+        require("telescope.builtin").grep_string({
+          grep_open_files = true,
+        })
+      end,
+      desc = "[S]earch [W]ord in Open Files",
+    },
+    {
       "<leader>s/",
       function()
         require("telescope.builtin").live_grep({

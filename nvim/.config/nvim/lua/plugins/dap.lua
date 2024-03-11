@@ -1,5 +1,7 @@
+-- TODO: Get this working for job and decide on a better binding than d
 return {
   "mfussenegger/nvim-dap",
+  enabled = false,
   dependencies = {
     "rcarriga/nvim-dap-ui",
     "theHamsta/nvim-dap-virtual-text",

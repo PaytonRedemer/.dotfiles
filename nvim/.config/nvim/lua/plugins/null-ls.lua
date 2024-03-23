@@ -1,13 +1,10 @@
 return {
-  "jay-babu/mason-null-ls.nvim",
-  dependencies = {
-    { "williamboman/mason.nvim", opts = {} },
-    "nvimtools/none-ls.nvim",
-  },
+  "nvimtools/none-ls.nvim",
+  dependencies = { "WhoIsSethDaniel/mason-tool-installer.nvim" },
   event = { "BufReadPre", "BufNewFile" },
   opts = function()
     local null_ls = require("null-ls")
-    null_ls.setup({
+    return {
       sources = {
         -- General
         null_ls.builtins.code_actions.proselint,
@@ -34,11 +31,6 @@ return {
         -- Lua
         null_ls.builtins.formatting.stylua,
       },
-    })
-
-    return {
-      ensure_installed = nil,
-      automatic_installation = true,
     }
   end,
 }

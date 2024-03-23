@@ -2,8 +2,7 @@ return {
   "neovim/nvim-lspconfig",
   dependencies = {
     { "folke/neodev.nvim", opts = {} },
-    { "williamboman/mason.nvim", opts = {} },
-    "williamboman/mason-lspconfig.nvim",
+    "WhoIsSethDaniel/mason-tool-installer.nvim",
     "hrsh7th/cmp-nvim-lsp",
   },
   cmd = "LspInfo",
@@ -28,30 +27,26 @@ return {
       nmap("<leader>cr", vim.lsp.buf.rename, "[C]ode [R]ename")
     end
 
-    require("mason-lspconfig").setup({
-      ensure_installed = {
-        "bashls",
-        "clangd",
-        "eslint",
-        "ltex",
-        "lua_ls",
-        "nil_ls",
-        "pyright",
-        "rust_analyzer",
-        "tsserver",
-      },
-    })
+    local servers = {
+      "bashls",
+      "clangd",
+      "eslint",
+      "ltex",
+      "lua_ls",
+      "nil_ls",
+      "pyright",
+      "rust_analyzer",
+      "tsserver",
+    }
 
     local capabilities = vim.lsp.protocol.make_client_capabilities()
     capabilities = require("cmp_nvim_lsp").default_capabilities(capabilities)
 
-    require("mason-lspconfig").setup_handlers({
-      function(server_name)
-        require("lspconfig")[server_name].setup({
-          on_attach = on_attach,
-          capabilities = capabilities,
-        })
-      end,
-    })
+    for _, server in ipairs(servers) do
+      require("lspconfig")[server].setup({
+        on_attach = on_attach,
+        capabilities = capabilities,
+      })
+    end
   end,
 }

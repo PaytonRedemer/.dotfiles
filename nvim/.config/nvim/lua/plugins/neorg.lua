@@ -2,6 +2,7 @@ return {
   "nvim-neorg/neorg",
   dependencies = { "nvim-lua/plenary.nvim" },
   build = ":Neorg sync-parsers",
+  version = "v7.0.0", -- pin to version that doesn't require luarocks
   -- tag = "*",
   lazy = true,   -- enable lazy load
   ft = "norg",   -- lazy load on file type
